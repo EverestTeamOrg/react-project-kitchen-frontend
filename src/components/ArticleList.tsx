@@ -2,7 +2,11 @@ import ArticlePreview from './ArticlePreview';
 import ListPagination from './ListPagination';
 import React from 'react';
 
-const ArticleList = props => {
+interface TArticleListProps {
+  articles: any;
+}
+
+const ArticleList: React.FC<TArticleListProps> = (props: any) => {
   if (!props.articles) {
     return (
       <div className="article-preview">Loading...</div>
@@ -20,7 +24,7 @@ const ArticleList = props => {
   return (
     <div>
       {
-        props.articles.map(article => {
+        props.articles.map((article: any) => {
           return (
             <ArticlePreview article={article} key={article.slug} />
           );

@@ -11,7 +11,7 @@ const initialState = {
   pager: null,
 };
 
-export const articlesListSlice = createSlice({
+export const articleListSlice = createSlice({
   name: "articleList",
   initialState,
   reducers: {
@@ -34,19 +34,19 @@ export const articlesListSlice = createSlice({
     },
     APPLY_TAG_FILTER: (state, action) => {
       state.pager = action.pager;
-      state.articles  = action.payload.articles;
+      state.articles = action.payload.articles;
       state.articlesCount = action.payload.articlesCount;
-      state.tab = null
+      state.tab = null;
       state.tag = action.tag;
       state.currentPage = 0;
     },
     HOME_ARTICLE_LOADED: (state, action) => {
-      state.pager = action.pager
-      state.tags = action.payload[0].tags
-      state.articles = action.payload[1].articles
-      state.articlesCount = action.payload[1].articlesCount
-      state.currentPage = 0
-      state.tab = action.tab
+      state.pager = action.pager;
+      state.tags = action.payload[0].tags;
+      state.articles = action.payload[1].articles;
+      state.articlesCount = action.payload[1].articlesCount;
+      state.currentPage = 0;
+      state.tab = action.tab;
     },
     HOME_ARTICLE_UNLOADED: (state, action) => {
       return {};
@@ -72,11 +72,25 @@ export const articlesListSlice = createSlice({
       state.currentPage = 0;
     },
     PROFILE_ARTICLE_UNLOADED: (state, action) => {
-      return {}
+      return {};
     },
     PROFILE_FAVORITES_ARTICLE_UNLOADED: (state, action) => {
-      return {}
+      return {};
     },
-
   },
 });
+
+export default articleListSlice.reducer;
+export const {
+  ARTICLE_FAVORITED,
+  ARTICLE_UNFAVORITED,
+  SET_PAGE,
+  APPLY_TAG_FILTER,
+  HOME_ARTICLE_LOADED,
+  HOME_ARTICLE_UNLOADED,
+  CHANGE_TAB,
+  PROFILE_ARTICLE_LOADED,
+  PROFILE_ARTICLE_UNLOADED,
+  PROFILE_FAVORITES_ARTICLE_LOADED,
+  PROFILE_FAVORITES_ARTICLE_UNLOADED,
+} = articleListSlice.actions;
