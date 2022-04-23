@@ -1,7 +1,6 @@
 import {Link} from 'react-router-dom';
 import ListErrors from './ListErrors';
 import React, {FunctionComponent, useEffect} from 'react';
-import agent from '../agent';
 import {TypedUseSelectorHook, useDispatch, useSelector as selectorHook} from 'react-redux';
 import {
   UPDATE_FIELD_AUTH,
@@ -10,6 +9,7 @@ import {
 } from '../constants/actionTypes';
 import rootReducer from "../reducer.js";
 import {store} from "../store";
+import { login } from '../api';
 
 // TODO: типизацию useSelector перенести в общий файл
 export type RootState = ReturnType<typeof rootReducer>;
@@ -23,8 +23,6 @@ const Login: FunctionComponent = () => {
     return state;
   })
 
-
-
   const dispatch = useAppDispatch();
 
   // TODO: это auth.actions?
@@ -35,7 +33,7 @@ const Login: FunctionComponent = () => {
     dispatch({type: UPDATE_FIELD_AUTH, key: 'password', value})
   }
   const onSubmit = (email: string, password: string) => {
-    dispatch({type: LOGIN, payload: agent.Auth.login(email, password)})
+    dispatch({ type: LOGIN, payload: login(email, password) })
   }
   const onUnload = () => {
     dispatch({type: LOGIN_PAGE_UNLOADED})
@@ -77,7 +75,7 @@ const Login: FunctionComponent = () => {
                     className="form-control form-control-lg"
                     type="email"
                     placeholder="Email"
-                    value={props.email}
+                    value={auth.email}
                     onChange={(event) => changeEmail(event)}/>
                 </fieldset>
 
