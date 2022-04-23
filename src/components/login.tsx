@@ -18,25 +18,27 @@ export const useAppDispatch = () => useDispatch<typeof store.dispatch>();
 
 // errors - см тип внутри ListErrors
 
-const Login: FunctionComponent<{ email: string, password: string, errors: any }> = (props) => {
+const Login: FunctionComponent = () => {
   const {auth} = useSelector(state => {
     return state;
   })
+
+
 
   const dispatch = useAppDispatch();
 
   // TODO: это auth.actions?
   const onChangeEmail = (value: string) => {
-    auth.dispatch({type: UPDATE_FIELD_AUTH, key: 'email', value})
+    dispatch({type: UPDATE_FIELD_AUTH, key: 'email', value})
   }
   const onChangePassword = (value: string) => {
-    auth.dispatch({type: UPDATE_FIELD_AUTH, key: 'password', value})
+    dispatch({type: UPDATE_FIELD_AUTH, key: 'password', value})
   }
   const onSubmit = (email: string, password: string) => {
-    auth.dispatch({type: LOGIN, payload: agent.Auth.login(email, password)})
+    dispatch({type: LOGIN, payload: agent.Auth.login(email, password)})
   }
   const onUnload = () => {
-    auth.dispatch({type: LOGIN_PAGE_UNLOADED})
+    dispatch({type: LOGIN_PAGE_UNLOADED})
   }
 
   useEffect(() => {
@@ -45,8 +47,7 @@ const Login: FunctionComponent<{ email: string, password: string, errors: any }>
 
   const changeEmail = (event: React.ChangeEvent<HTMLInputElement>) => onChangeEmail(event.target.value);
   const changePassword = (event: React.ChangeEvent<HTMLInputElement>) => onChangePassword(event.target.value);
-  const submitForm = (email: string, password: string) => (event: InputEvent) => {
-    event.preventDefault();
+  const submitForm = (email: string, password: string) => {
     onSubmit(email, password);
   }
 
@@ -63,9 +64,12 @@ const Login: FunctionComponent<{ email: string, password: string, errors: any }>
               </Link>
             </p>
 
-            <ListErrors errors={props.errors}/>
+            <ListErrors errors={auth.errors}/>
 
-            <form onSubmit={() => submitForm(props.email, props.password)}>
+            <form onSubmit={(event) => {
+              event.preventDefault();
+              submitForm(auth.email, auth.password)
+            }}>
               <fieldset>
 
                 <fieldset className="form-group">
@@ -82,14 +86,14 @@ const Login: FunctionComponent<{ email: string, password: string, errors: any }>
                     className="form-control form-control-lg"
                     type="password"
                     placeholder="Password"
-                    value={props.password}
+                    value={auth.password}
                     onChange={(event) => changePassword(event)}/>
                 </fieldset>
 
                 <button
                   className="btn btn-lg btn-primary pull-xs-right"
-                  type="submit">
-                   {/*disabled={auth.inProgress}>*/}
+                  type="submit"
+                   disabled={auth.inProgress}>
                   Sign in
                 </button>
 

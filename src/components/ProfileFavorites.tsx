@@ -77,21 +77,21 @@ function ProfileFavorites(props: TProfileProps) {
         follow={props.onFollow}
         unfollow={props.onUnfollow}
       />
-      <div className="container">
-        <div className="row">
-          <div className="col-xs-12 col-md-10 offset-md-1">
-            <div className="articles-toggle">
-              <RenderTabs username={profile.username} />
-            </div>
-            <ArticleList
-              pager={props.pager}
-              articles={props.articles}
-              articlesCount={props.articlesCount}
-              state={props.currentPage} />
-          </div>
+      {/*<div className="container">*/}
+      {/*  <div className="row">*/}
+      {/*    <div className="col-xs-12 col-md-10 offset-md-1">*/}
+      {/*      <div className="articles-toggle">*/}
+      {/*        <RenderTabs username={profile.username} />*/}
+      {/*      </div>*/}
+      {/*      <ArticleList*/}
+      {/*        pager={props.pager}*/}
+      {/*        articles={props.articles}*/}
+      {/*        articlesCount={props.articlesCount}*/}
+      {/*        state={props.currentPage} />*/}
+      {/*    </div>*/}
 
-        </div>
-      </div>
+      {/*  </div>*/}
+      {/*</div>*/}
 
     </div>
   )
