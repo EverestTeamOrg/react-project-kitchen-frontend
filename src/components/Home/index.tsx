@@ -9,6 +9,7 @@ import {
   HOME_PAGE_UNLOADED,
   APPLY_TAG_FILTER,
 } from "../../constants/actionTypes";
+import { getAllArticles, getFeedArticles, getTags } from '../../api';
 
 const Promise = global.Promise;
 
@@ -31,12 +32,15 @@ const Home = (props: any) => {
   useEffect(() => {
     const tab = props.token ? "feed" : "all";
     const articlesPromise = props.token
-      ? agent.Articles.feed
-      : agent.Articles.all;
+      // ? agent.Articles.feed
+      // : agent.Articles.all;
+      ? getFeedArticles
+      : getAllArticles;
     props.onLoad(
       tab,
       articlesPromise,
-      Promise.all([agent.Tags.getAll(), articlesPromise()])
+      // Promise.all([agent.Tags.getAll(), articlesPromise()])
+      Promise.all([getTags(), articlesPromise()])
     );
     return props.onUnload();
   }, []);

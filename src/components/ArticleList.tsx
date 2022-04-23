@@ -4,6 +4,9 @@ import React from 'react';
 
 interface TArticleListProps {
   articles: any;
+  pager?: any;
+  articlesCount?: any;
+  state?: any;
 }
 
 const ArticleList: React.FC<TArticleListProps> = (props: any) => {

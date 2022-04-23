@@ -9,6 +9,8 @@ import {
   PROFILE_PAGE_UNLOADED
 } from '../constants/actionTypes';
 import ArticleList from './ArticleList';
+import { getFavoritedArticles } from '../api';
+import { getProfile } from '../api';
 
 export type TProfileProps = {
   profile: {
@@ -55,9 +57,12 @@ function ProfileFavorites(props: TProfileProps) {
     props.profile.username === props.currentUser.username;
 
   useEffect(() => {
-    props.onLoad((page: any) => agent.Articles.favoritedBy(props.match.params.username, page), Promise.all([
-      agent.Profile.get(props.match.params.username),
-      agent.Articles.favoritedBy(props.match.params.username)
+    // props.onLoad((page: any) => agent.Articles.favoritedBy(props.match.params.username, page), Promise.all([
+    props.onLoad((page: any) => getFavoritedArticles(props.match.params.username, page), Promise.all([  
+      // agent.Profile.get(props.match.params.username),
+      // agent.Articles.favoritedBy(props.match.params.username)
+      getProfile(props.match.params.username),
+      getFavoritedArticles(props.match.params.username)
     ]));
 
     return () => {

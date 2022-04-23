@@ -2,6 +2,7 @@ import React from 'react';
 import agent from '../agent';
 import { connect } from 'react-redux';
 import { SET_PAGE } from '../constants/actionTypes';
+import { getAllArticles } from '../api';
 
 const mapDispatchToProps = (dispatch: any) => ({
   onSetPage: (page: any, payload: any) =>
@@ -29,7 +30,8 @@ const ListPagination: React.FC<TListPaginationProps> = (props) => {
     if(props.pager) {
       props.onSetPage(page, props.pager(page));
     }else {
-      props.onSetPage(page, agent.Articles.all(page))
+      // props.onSetPage(page, agent.Articles.all(page))
+      props.onSetPage(page, getAllArticles(page))
     }
   };
 

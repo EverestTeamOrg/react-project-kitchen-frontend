@@ -7,6 +7,7 @@ import {
   SETTINGS_PAGE_UNLOADED,
   LOGOUT
 } from '../constants/actionTypes';
+import { updateUser } from '../api';
 
 class SettingsForm extends React.Component {
   constructor() {
@@ -132,7 +133,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   onClickLogout: () => dispatch({ type: LOGOUT }),
   onSubmitForm: user =>
-    dispatch({ type: SETTINGS_SAVED, payload: agent.Auth.save(user) }),
+    // dispatch({ type: SETTINGS_SAVED, payload: agent.Auth.save(user) }),
+    dispatch({ type: SETTINGS_SAVED, payload: updateUser(user) }),
   onUnload: () => dispatch({ type: SETTINGS_PAGE_UNLOADED })
 });
 

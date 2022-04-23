@@ -1,5 +1,6 @@
 import React from 'react';
 import agent from '../../agent';
+import { getArticlesByTag } from '../../api';
 
 type TTagsProps = {
   tags: string[] | null,
@@ -15,7 +16,8 @@ const Tags: React.FC<TTagsProps> = props => {
           tags.map(tag => {
             const handleClick = (ev: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
               ev.preventDefault();
-              props.onClickTag(tag, page => agent.Articles.byTag(tag, page), agent.Articles.byTag(tag));
+              // props.onClickTag(tag, page => agent.Articles.byTag(tag, page), agent.Articles.byTag(tag));
+              props.onClickTag(tag, page => getArticlesByTag(tag, page), getArticlesByTag(tag));
             };
             return (
               <a

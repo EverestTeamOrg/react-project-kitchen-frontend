@@ -2,6 +2,7 @@ import React from 'react';
 import agent from '../../agent';
 import { connect } from 'react-redux';
 import { DELETE_COMMENT } from '../../constants/actionTypes';
+import { deleteComment } from '../../api';
 
 const mapDispatchToProps = (dispatch: any) => ({
   onClick: (payload: any, commentId: any) =>
@@ -17,7 +18,8 @@ type TDeleteButtonProps = {
 
 const DeleteButton: React.FC<TDeleteButtonProps> = (props) => {
   const del = () => {
-    const payload = agent.Comments.delete(props.slug, props.commentId);
+    // const payload = agent.Comments.delete(props.slug, props.commentId);
+    const payload = deleteComment(props.slug, props.commentId);
     props.onClick(payload, props.commentId);
   };
 

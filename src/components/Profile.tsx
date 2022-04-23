@@ -10,7 +10,11 @@ import {
   PROFILE_PAGE_LOADED,
   PROFILE_PAGE_UNLOADED
 } from '../constants/actionTypes';
-import { TProfileProps } from './ProfileFavorites'
+import { TProfileProps } from './ProfileFavorites';
+import { getArticlesByAuthor } from '../api';
+import { followUser as _followUserApi } from '../api';
+import { getProfile } from '../api';
+import { unfollowUser } from '../api';
 
 const mapStateToProps = (state: any) => ({
   ...state.articleList,
@@ -21,12 +25,14 @@ const mapStateToProps = (state: any) => ({
 const mapDispatchToProps = (dispatch: any) => ({
   onFollow: (username: any) => dispatch({
     type: FOLLOW_USER,
-    payload: agent.Profile.follow(username)
+    // payload: agent.Profile.follow(username)
+    payload: _followUserApi(username)
   }),
   onLoad: (payload: any) => dispatch({ type: PROFILE_PAGE_LOADED, payload }),
   onUnfollow: (username: any) => dispatch({
     type: UNFOLLOW_USER,
-    payload: agent.Profile.unfollow(username)
+    // payload: agent.Profile.unfollow(username)
+    payload: unfollowUser(username)
   }),
   onUnload: () => dispatch({ type: PROFILE_PAGE_UNLOADED })
 });
@@ -38,8 +44,10 @@ function Profile(props: TProfileProps) {
 
   useEffect(() => {
     props.onLoad(Promise.all([
-      agent.Profile.get(props.match.params.username),
-      agent.Articles.byAuthor(props.match.params.username)
+      // agent.Profile.get(props.match.params.username),
+      // agent.Articles.byAuthor(props.match.params.username)
+      getProfile(props.match.params.username),
+      getArticlesByAuthor(props.match.params.username)
     ]));
 
     return () => {

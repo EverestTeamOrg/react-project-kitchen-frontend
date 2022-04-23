@@ -12,8 +12,9 @@ import Profile from '../components/Profile';
 import ProfileFavorites from '../components/ProfileFavorites';
 import Register from '../components/Register';
 import Settings from '../components/Settings';
-import {store} from '../store';
-import {push} from 'react-router-redux';
+import { store } from '../store';
+import { push } from 'react-router-redux';
+import { auth, setTokenAxios } from '../api';
 
 const mapStateToProps = state => {
   return {
@@ -43,10 +44,12 @@ class App extends React.Component {
   componentWillMount() {
     const token = window.localStorage.getItem('jwt');
     if (token) {
-      agent.setToken(token);
+      // agent.setToken(token);
+      setTokenAxios(token);
     }
 
-    this.props.onLoad(token ? agent.Auth.current() : null, token);
+    // this.props.onLoad(token ? agent.Auth.current() : null, token);
+    this.props.onLoad(token ? auth() : null, token);
   }
 
   render() {

@@ -18,9 +18,9 @@ export const articleSlice = createSlice({
     },
     ADD_COMMENT: (state, action) => {
       state.commentErrors = action.error ? action.payload.errors : null;
-      state.comments = action.error ?
-        null :
-        (state.comments || []).concat([action.payload.comment])
+      state.comments = action.error 
+      ? null 
+      : (state.comments || []).concat([action.payload.comment])
     },
     DELETE_COMMENT: (state, action) => {
       const commentId = action.commentId;

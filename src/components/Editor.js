@@ -10,6 +10,9 @@ import {
   EDITOR_PAGE_UNLOADED,
   UPDATE_FIELD_EDITOR
 } from '../constants/actionTypes';
+import { getArticle } from '../api';
+import { updateArticle } from '../api';
+import { createArticle } from '../api';
 
 const mapStateToProps = state => ({
   ...state.editor
@@ -63,9 +66,10 @@ class Editor extends React.Component {
 
       const slug = { slug: this.props.articleSlug };
       const promise = this.props.articleSlug ?
-        agent.Articles.update(Object.assign(article, slug)) :
-        agent.Articles.create(article);
-
+        // agent.Articles.update(Object.assign(article, slug)) :
+        // agent.Articles.create(article);
+        updateArticle(Object.assign(article, slug)) :
+        createArticle(article);
       this.props.onSubmit(promise);
     };
   }
@@ -74,7 +78,8 @@ class Editor extends React.Component {
     if (this.props.match.params.slug !== nextProps.match.params.slug) {
       if (nextProps.match.params.slug) {
         this.props.onUnload();
-        return this.props.onLoad(agent.Articles.get(this.props.match.params.slug));
+        // return this.props.onLoad(agent.Articles.get(this.props.match.params.slug));
+        return this.props.onLoad(getArticle(this.props.match.params.slug));
       }
       this.props.onLoad(null);
     }
@@ -82,7 +87,8 @@ class Editor extends React.Component {
 
   componentWillMount() {
     if (this.props.match.params.slug) {
-      return this.props.onLoad(agent.Articles.get(this.props.match.params.slug));
+      // return this.props.onLoad(agent.Articles.get(this.props.match.params.slug));
+      return this.props.onLoad(getArticle(this.props.match.params.slug));
     }
     this.props.onLoad(null);
   }

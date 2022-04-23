@@ -8,6 +8,7 @@ import {
   REGISTER,
   REGISTER_PAGE_UNLOADED
 } from '../constants/actionTypes';
+import { signup } from '../api';
 
 const mapStateToProps = (state: any) => ({ ...state.auth });
 
@@ -19,7 +20,8 @@ const mapDispatchToProps = (dispatch: any) => ({
   onChangeUsername: (value: any) =>
     dispatch({ type: UPDATE_FIELD_AUTH, key: 'username', value }),
   onSubmit: (username: string, email: string, password: string) => {
-    const payload = agent.Auth.register(username, email, password);
+    // const payload = agent.Auth.register(username, email, password);
+    const payload = signup(username, email, password);
     dispatch({ type: REGISTER, payload })
   },
   onUnload: () =>

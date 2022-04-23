@@ -5,6 +5,8 @@ import agent from '../../agent';
 import { connect } from 'react-redux';
 import marked from 'marked';
 import { ARTICLE_PAGE_LOADED, ARTICLE_PAGE_UNLOADED } from '../../constants/actionTypes';
+import { getArticle } from '../../api';
+import { getCommentsForArticle } from '../../api';
 
 const mapStateToProps = state => ({
   ...state.article,
@@ -21,8 +23,10 @@ const mapDispatchToProps = dispatch => ({
 class Article extends React.Component {
   componentWillMount() {
     this.props.onLoad(Promise.all([
-      agent.Articles.get(this.props.match.params.id),
-      agent.Comments.forArticle(this.props.match.params.id)
+      // agent.Articles.get(this.props.match.params.id),
+      getArticle(this.props.match.params.id),
+      // agent.Comments.forArticle(this.props.match.params.id)
+      getCommentsForArticle(this.props.match.params.id)
     ]));
   }
 
