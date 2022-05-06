@@ -1,5 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
 import { followUserThunk, unfollowUserThunk } from "../services/thunks";
+import * as Styles from "./StyledComponents/followUserButtonStyles";
+import minus from "../images/whiteMinus.svg";
+import plus from "../images/whitePlus.svg";
 
 type TFollowUserButton = {
   follow?: any;
@@ -12,22 +15,11 @@ type TFollowUserButton = {
   }
 }
 
-//Перенести follow и unFollow из ProfileFavorits после полного подключения Редакс.
+//Проверить здесь все, когда можно будет подписываться.
 function FollowUserButton({ isUser, user, follow, unfollow }: TFollowUserButton) {
 
   const { following } = useSelector((state: any) => state.profile);
   const dispatch = useDispatch()
-
-  if (isUser) {
-    return null;
-  }
-
-  let classes = 'btn btn-sm action-btn';
-  if (user.following) {
-    classes += ' btn-secondary';
-  } else {
-    classes += ' btn-outline-secondary';
-  }
 
   const handleClick = (ev: React.SyntheticEvent<Element, Event>) => {
     ev.preventDefault();
@@ -35,15 +27,16 @@ function FollowUserButton({ isUser, user, follow, unfollow }: TFollowUserButton)
     ? dispatch(unfollowUserThunk(user.username))
     : dispatch(followUserThunk(user.username))
   };
+//Вернуть это условие.
+  // if (isUser) {
+  //   return null;
+  // }
 
   return (
-    <button
-      className={classes}
-      onClick={handleClick}>
-      <i className="ion-plus-round"></i>
-      &nbsp;
-      {user.following ? 'Unfollow' : 'Follow'} {user.username}
-    </button>
+    <Styles.followBtn onClick={handleClick}>
+      <Styles.followImg src={user.following ? minus : plus}/>
+      {user.following ? 'Отписаться' : 'Подписаться'}
+    </Styles.followBtn>
   );
 };
 

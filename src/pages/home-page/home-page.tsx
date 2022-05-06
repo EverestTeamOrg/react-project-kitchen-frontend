@@ -1,7 +1,7 @@
-import Banner from "./Banner";
-import MainView from "./MainView";
+import Banner from "../../components/Home/Banner";
+import MainView from "../../components/Home/MainView";
 import { FC, useEffect } from "react";
-import Tags from "./Tags";
+import Tags from "../../components/Home/Tags";
 import { useSelector, useDispatch } from "react-redux";
 import {
   getAllArticlesThunk,

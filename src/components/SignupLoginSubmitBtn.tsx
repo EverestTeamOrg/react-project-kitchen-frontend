@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import {StyleBtn} from "./StyledComponents/signupLoginSubmitBtnStyles"
 
 interface ISignupLoginSubmitBtnProps {
   btnText: string;
@@ -9,16 +10,15 @@ interface ISignupLoginSubmitBtnProps {
 const SignupLoginSubmitBtn: FC<ISignupLoginSubmitBtnProps> = ({
   btnText,
   type = "submit",
-  disabled = false,
+  disabled,
 }) => {
   return (
-    <button
+    <StyleBtn
       disabled={disabled}
       type={type}
-      className="btn btn-lg btn-primary pull-xs-right"
     >
       {btnText}
-    </button>
+    </StyleBtn>
   );
 };
 

@@ -3,14 +3,14 @@ import ProfileHeader from "./ProfileHeader";
 import RenderTabs from "./RenderTabs";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { TProfileProps } from "./ProfileFavorites";
 import { useParams, useLocation } from "react-router-dom";
 import {
   getArticlesByAuthorThunk,
   getFavoritedArticlesThunk,
   getProfileThunk,
 } from "../services/thunks";
-import {profileSlice} from "../services/profileSlice";
+import { profileSlice } from "../services/profileSlice";
+import * as Styles from "./StyledComponents/profileStyles";
 
 // export type TProfileProps = {
 //   match: {
@@ -32,7 +32,7 @@ function Profile() {
 
   const actionsProfile = profileSlice.actions;
 
-  const params: { username: string; [key: string]: any } = useParams();
+  const params: { username: string;[key: string]: any } = useParams();
   const { pathname } = useLocation();
 
   useEffect(() => {
@@ -57,27 +57,32 @@ function Profile() {
     return null;
   }
   return (
-    <div className="profile-page">
+    <Styles.ProfileSection>
       <ProfileHeader
-        //Понять что за bio и откуда оно берется, в ответе сервера его нет.
         profile={{ username, image, following, bio }}
       />
-      <div className="container">
-        <div className="row">
-          <div className="col-xs-12 col-md-10 offset-md-1">
-            <div className="articles-toggle">
-              <RenderTabs username={username} />
-            </div>
-            <ArticleList
-              pager={pager}
-              articles={articles}
-              articlesCount={articlesCount}
-              state={currentPage}
-            />
-          </div>
-        </div>
-      </div>
-    </div>
+    </Styles.ProfileSection>
+    // <div className="profile-page">
+    //   <ProfileHeader
+    //     //Понять что за bio и откуда оно берется, в ответе сервера его нет.
+    //     profile={{ username, image, following, bio }}
+    //   />
+    //   <div className="container">
+    //     <div className="row">
+    //       <div className="col-xs-12 col-md-10 offset-md-1">
+    //         <div className="articles-toggle">
+    //           <RenderTabs username={username} />
+    //         </div>
+    //         <ArticleList
+    //           pager={pager}
+    //           articles={articles}
+    //           articlesCount={articlesCount}
+    //           state={currentPage}
+    //         />
+    //       </div>
+    //     </div>
+    //   </div>
+    // </div>
   );
 }
 
