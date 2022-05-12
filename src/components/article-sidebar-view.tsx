@@ -10,10 +10,12 @@ import ProfileInformationView from "./profile-information-view";
 import Like from "./Article/like";
 import like from "../images/like-icon.svg";
 import {TArticleProperties} from "../services/types";
+import {ArticleTooltip} from "./article-tooltip";
 
 const ArticleSidebarView: FunctionComponent<{ article: TArticleProperties, articleDate: string }> = (props) => {
   return (
-    <ArticleWrapper>
+    <ArticleWrapper
+      >
       <AuthorWrapper>
         <ProfileInformationView articleDate={props.articleDate} author={props.article.author}/>
         <Like counter={props.article.favoritesCount} icon={like}/>

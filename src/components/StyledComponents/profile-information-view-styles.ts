@@ -5,13 +5,14 @@ import {Link} from "react-router-dom";
 export const ProfileContainer = styled.div`
   box-sizing: border-box;
   display: flex;
+  justify-content: flex-start;
   align-items: center;
   margin: 0;
 `
 
 export const ProfileImageWrapper = styled.div`
   box-sizing: border-box;
-  margin-right: 8px;
+  margin: 0 8px 0 0;
   width: 32px;
   height: 32px;
   border-radius: 50%;
@@ -41,6 +42,7 @@ export const ProfileImage = styled.img`
 export const ProfileTextWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  margin: 0;
 `
 
 export const ProfileText = styled.p<TFontStyle>`

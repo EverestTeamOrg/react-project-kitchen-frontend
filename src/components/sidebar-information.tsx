@@ -22,6 +22,7 @@ const SidebarInformation: FunctionComponent<{sectionTitle: string, articles: Arr
           <>
             <ArticleSidebarView key={index} article={article}
                                 articleDate={composeCreatedDate(article.createdAt)}/>
+            <ArticleTooltip article={article}/>
           </>
         ))
       }
