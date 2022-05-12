@@ -4,6 +4,7 @@ import {SidebarHeading} from "./StyledComponents/sidebar-information-styles";
 import ArticleSidebarView from "./article-sidebar-view";
 import {TArticleProperties} from "../services/types";
 import {composeCreatedDate, sortArrayOfObjects} from "../utils/utils";
+import {ArticleTooltip} from "./article-tooltip";
 
 const SidebarInformation: FunctionComponent<{sectionTitle: string, articles: Array<TArticleProperties>, keyName: string}> = (props) => {
   let articlesArrayForSort;
@@ -18,10 +19,13 @@ const SidebarInformation: FunctionComponent<{sectionTitle: string, articles: Arr
       <SidebarHeading>{props.sectionTitle}</SidebarHeading>
       {
         articlesArrayForSort.map((article, index) => (
-          <ArticleSidebarView key={index} article={article}
-                              articleDate={composeCreatedDate(article.createdAt)}/>
+          <>
+            <ArticleSidebarView key={index} article={article}
+                                articleDate={composeCreatedDate(article.createdAt)}/>
+          </>
         ))
       }
+
     </>
   )
 }
