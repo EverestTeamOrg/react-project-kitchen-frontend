@@ -40,15 +40,14 @@ export const EditorTitle = styled.h2`
     font-size: 32px;
   }
 `
-export const EditorTextarea = styled(TextareaAutosize)<{isError: any}>`
+export const EditorTextarea = styled(TextareaAutosize)`
   display: block;
 
-  width: 100%;
+  width: 99.6%;
 
   overflow:hidden;
 
-  border: 1px solid ${props => props.isError ? `${inputBorderColor.error}` : `${inputBorderColor.default}`};
-  border-radius: 4px;
+  border: none;
 
   font-family: 'AlegreyaSans', Times, serif;
   font-weight:400;
@@ -57,11 +56,22 @@ export const EditorTextarea = styled(TextareaAutosize)<{isError: any}>`
   color: ${textColor.secondaryText};
 
   padding: 0 16px;
+  margin: 0 auto;
 
   transition: all 0.2s linear;
 
   &:focus{
     outline: none;
+}
+`
+
+export const TextAreaContainer = styled.div<{isError: any}>`
+  border: 1px solid ${props => props.isError ? `${inputBorderColor.error}` : `${inputBorderColor.default}`};
+  border-radius: 4px;
+
+  transition: all .2s linear;
+
+  &:focus-within{
     border-color: ${props => props.isError ? `${inputBorderColor.error}` : `${inputBorderColor.active}`};
 }
 `

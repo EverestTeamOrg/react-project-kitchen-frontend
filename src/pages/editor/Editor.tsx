@@ -1,11 +1,11 @@
-import {useState, useEffect, MouseEvent} from "react";
-import {useHistory, useParams} from "react-router";
+import { useState, useEffect } from "react";
+import { useHistory, useParams } from "react-router";
 import {
   createArticleThunk,
   deleteArticleThunk,
   updateArticleThunk,
 } from "../../services/thunks";
-import {useForm} from "react-hook-form";
+import { useForm } from "react-hook-form";
 import * as Styles from "../../components/StyledComponents/editorStyles";
 import * as FormStyles from "../../UI/forms/form";
 import IconInputFile from "../../UI/icon-input-file/icon-input-file";
@@ -47,7 +47,7 @@ function Editor() {
     setIsModalOpen(false);
   }
 
-  const deleteArticle = (e: MouseEvent<HTMLButtonElement>) => {
+  const deleteArticle = (e: any) => {
     e.preventDefault();
     if (article !== null) {
       dispatch(deleteArticleThunk(article.slug)).then(() => history.push("/"));
@@ -186,13 +186,14 @@ function Editor() {
             </FormStyles.ErrorsContainer>
             <FormStyles.Label>
               Текст статьи
-              <Styles.EditorTextarea
-                minRows={5.4}
-                isError={errors.body}
-                {...register("body", {
-                  required: "Это поле обязательно к заполнению.",
-                })}
-              />
+              <Styles.TextAreaContainer isError={errors.body}>
+                <Styles.EditorTextarea
+                  minRows={5.4}
+                  {...register("body", {
+                    required: "Это поле обязательно к заполнению.",
+                  })}
+                />
+              </Styles.TextAreaContainer>
             </FormStyles.Label>
             <FormStyles.ErrorsContainer>
               {errors?.body && <FormStyles.Error>{errors?.body?.message}</FormStyles.Error>}
@@ -224,7 +225,7 @@ function Editor() {
 
         </FormStyles.Form>
 
-        {params.slug && <DeleteArticleBtn onClick={openModal} mrgTop="24px" text="Удалить запись" align="flex-end"/>}
+        {params.slug && <DeleteArticleBtn onClick={openModal} mrgTop="24px" text="Удалить запись" align="flex-end" />}
 
       </Styles.EditorSection>
 
