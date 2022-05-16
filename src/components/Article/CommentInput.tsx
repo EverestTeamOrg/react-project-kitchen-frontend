@@ -1,25 +1,20 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
 
 import { createCommentThunk } from "../../services/thunks";
 import { composeCreatedDate } from "../../utils/utils";
 import ProfileInformationView from "../profile-information-view";
 import { CommentForm, CommentTextAria, CommentTextAriaWrapper, CommentFooterWrapper } from "../StyledComponents/commentContainerStyle";
 import * as Styled from "../StyledComponents/followUserButtonStyles";
+import {TFollowingUser} from "../../services/types";
+import {useAppDispatch} from "../../services/hooks";
 
 type TCommentInputProps = {
-  currentUser: {
-    username: any;
-    image: string;
-    following: boolean,
-    bio?: string,
-    isLoading: boolean,
-  };
+  currentUser: TFollowingUser;
   slug: any;
 };
 
 const CommentInput: React.FC<TCommentInputProps> = (props) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const [body, setBody] = useState<string>("");
 

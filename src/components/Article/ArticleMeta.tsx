@@ -12,13 +12,12 @@ import likeActive from "../../images/like-active-icon.svg";
 import {TArticleProperties} from "../../services/types";
 import {getAllArticlesForSortThunk} from "../../services/thunks";
 import {useAppDispatch} from "../../services/hooks";
-import {useDispatch} from "react-redux";
 import {articleSlice} from "../../services/articleSlice";
 
 
 const ArticleMeta: React.FC<{ article: TArticleProperties }> = (props) => {
   const article = props.article;
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const actionsArticle = articleSlice.actions;
 
   const onLikeClickHandler = (isFavorited: boolean) => {

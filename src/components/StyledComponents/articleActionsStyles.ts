@@ -37,11 +37,13 @@ export const ArticleActionsEditor = styled(Link)`
   transition: all 0.2s linear;
 
   &:hover {
+    color: ${textColor.whiteText};
     text-decoration: underline;
     background-color: ${btnSbmtColor.hover};
   }
 
   &:active {
+    color: ${textColor.whiteText};
     text-decoration: none;
     background-color: ${btnSbmtColor.active};
   }

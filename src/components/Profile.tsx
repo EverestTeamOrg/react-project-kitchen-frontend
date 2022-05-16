@@ -1,4 +1,3 @@
-import ArticleList from "./ArticleList";
 import ProfileHeader from "./ProfileHeader";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
@@ -15,9 +14,6 @@ function Profile() {
   const dispatch = useAppDispatch();
   const { username, image, following, isLoading } = useAppSelector(
     (state) => state.profile
-  );
-  const { pager, articles, articlesCount, currentPage } = useAppSelector(
-    (state) => state.articleList
   );
 
   const actionsProfile = profileSlice.actions;

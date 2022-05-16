@@ -21,15 +21,9 @@ import {
   ArticleTag
 } from '../StyledComponents/articlePageStyles';
 import Modal from '../modal/modal';
-import {SidebarRight} from '../StyledComponents/sidebar-information-styles';
 import SidebarInformation from '../sidebar-information';
 import { useAppDispatch, useAppSelector } from '../../services/hooks';
-
-const texts = {
-  title: "Удалить запись",
-  text: 'Нажимая кнопку «Удалить запись», материал будет удален без возможности восстановления',
-  button: 'Удалить запись'
-}
+import {textsForModal} from "../../services/types";
 
 type TArticleProps = {
   match: {
@@ -44,8 +38,8 @@ const Article: React.FC<TArticleProps> = (props) => {
 
   const {allArticles} = useAppSelector((state) => state.articleList);
 
-  const {article} = useAppSelector((state: any) => state.article);
-  const {currentUser} = useAppSelector((state: any) => state.common);
+  const {article} = useAppSelector((state) => state.article);
+  const {currentUser} = useAppSelector((state) => state.common);
   const {comments} = useAppSelector((state) => state.article);
   const {commentErrors} = useAppSelector((state) => state.article);
   const params: { id: string } = useParams();
@@ -132,7 +126,7 @@ const Article: React.FC<TArticleProps> = (props) => {
     </ArticlePage>
 
     { isModalOpen &&
-       <Modal deleteArticle={deleteArticle} title={texts.title} text={texts.text} button={texts.button} onClose={onClose} />
+       <Modal deleteArticle={deleteArticle} title={textsForModal.Title} text={textsForModal.Text} button={textsForModal.Button} onClose={onClose} />
 
     }
   </>);

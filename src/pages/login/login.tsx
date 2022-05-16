@@ -18,10 +18,10 @@ type FormData = {
 
 export const Login: React.FC = () => {
   const dispatch = useAppDispatch();
-  const { isLoggedIn } = useAppSelector((state: any) => state.common);
-  const [errorsResponse, setErrorsResponse] = useState<any>({});
-  const [isError, setIsError] = useState(false);
-  const { inProgress } = useAppSelector((state: any) => state.auth);
+  const { isLoggedIn } = useAppSelector((state) => state.common);
+  const [errorsResponse, setErrorsResponse] = useState<{[key: string]: string}>({});
+  const [isError, setIsError] = useState<boolean>(false);
+  const { inProgress } = useAppSelector((state) => state.auth);
 
   const {
     register,

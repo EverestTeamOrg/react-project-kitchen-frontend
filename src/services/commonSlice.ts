@@ -1,28 +1,21 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import { authThunk, loginThunk, signupThunk, updateUserThunk } from "./thunks";
+import {TFollowingUser} from "./types";
 
 interface IInitialState {
   appName: string,
   token: string | null,
-  // errors: null | any, // TODO: уточнить типы
   isLoggedIn: boolean,
-  currentUser: {
-    email: string,
-    // token: localStorage.getItem('jwt') ? localStorage.getItem('jwt') : "",
-    bio: string,
-    username: string,
-    image: string,
-  }
+  currentUser: TFollowingUser
+
 }
 
 const initialState: IInitialState = {
   appName: "Practicum Project Kitchen",
   token: localStorage.getItem("jwt") ? localStorage.getItem("jwt") : null,
-  // errors: null,
   isLoggedIn: false,
   currentUser: {
     email: "",
-    // token: localStorage.getItem('jwt') ? localStorage.getItem('jwt') : "",
     bio: "",
     username: "",
     image: "",
