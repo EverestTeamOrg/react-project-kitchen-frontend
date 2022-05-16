@@ -18,7 +18,7 @@ function Profile() {
 
   const actionsProfile = profileSlice.actions;
 
-  const params: { username: string;[key: string]: any } = useParams();
+  const params: { username: string;[key: string]: string } = useParams();
 
   useEffect(() => {
     if (params.username) {

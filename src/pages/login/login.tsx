@@ -9,6 +9,7 @@ import * as FormStyles from "../../UI/forms/form";
 import Preloader from "../../components/Preloader";
 import { useAppDispatch, useAppSelector } from "../../services/hooks";
 import SubmitButton from "../../components/submitButton";
+import { ErrorResponseLogin } from "../../services/types";
 
 
 type FormData = {
@@ -39,7 +40,7 @@ export const Login: React.FC = () => {
     e && e.preventDefault();
     dispatch(loginThunk({ email, password }))
       .unwrap()
-      .catch((error: any) => {
+      .catch((error: ErrorResponseLogin) => {
         setErrorsResponse(error);
       });
   });

@@ -58,3 +58,13 @@ export enum textsForModal {
   Text = 'При нажатии кнопки «Удалить запись» материал будет удален без возможности восстановления',
   Button = 'Удалить запись'
 }
+
+export type ErrorResponse = {
+  email?: string;
+  password?: string;
+  username?: string;
+}
+
+export type ErrorResponseLogin = ErrorResponse & {
+  'email or password'?: string;
+}
