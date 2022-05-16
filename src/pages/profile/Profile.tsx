@@ -1,4 +1,3 @@
-import ArticleList from "../../components/ArticleList";
 import ProfileHeader from "../../components/ProfileHeader";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,14 +10,15 @@ import { ProfileText } from "../../components/StyledComponents/profileStyles";
 import ArticlePreview  from "../../components/ArticlePreview"
 
 import Preloader from "../../components/Preloader";
+import {useAppSelector} from "../../services/hooks";
 
 function Profile() {
   const dispatch = useDispatch();
-  const { username, image, following, isLoading } = useSelector(
-    (state: any) => state.profile
+  const { username, image, following, isLoading } = useAppSelector(
+    (state) => state.profile
   );
-  const { pager, articles, articlesCount, currentPage } = useSelector(
-    (state: any) => state.articleList
+  const { articles } = useAppSelector(
+    (state) => state.articleList
   );
 
   const actionsProfile = profileSlice.actions;

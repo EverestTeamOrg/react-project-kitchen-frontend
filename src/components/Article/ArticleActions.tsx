@@ -1,24 +1,30 @@
 import React from "react";
 
-import { ArticleActionsEditor, ArticleActionsEditorIcon, ArticleActionsWrapper } from "../StyledComponents/articleActionsStyles";
+import {
+  ArticleActionsEditor,
+  ArticleActionsEditorIcon,
+  ArticleActionsWrapper
+} from "../StyledComponents/articleActionsStyles";
 
 import plus from "../../images/whitePlus.svg";
 
 import DeleteArticleBtn from "../DeleteArticleBtn";
-import { useAppSelector } from "../../services/hooks";
+import {useAppSelector} from "../../services/hooks";
+import {TArticleProperties} from "../../services/types";
 
 type TArticleActionsProps = {
-  article: any;
+  article: TArticleProperties;
   canModify: boolean;
   onClick: () => void;
 };
 
 const ArticleActions: React.FC<TArticleActionsProps> = (props) => {
 
-  const { article } = useAppSelector((state: any) => state.article);
+  const {article} = useAppSelector((state) => state.article);
 
-  if (props.canModify) {
+  if (props.canModify && article !== null) {
     return (
+
       <ArticleActionsWrapper>
         <ArticleActionsEditor
           to={`/editor/${article.slug}`}
@@ -32,7 +38,6 @@ const ArticleActions: React.FC<TArticleActionsProps> = (props) => {
       </ArticleActionsWrapper>
     );
   }
-
   return <span></span>;
 };
 

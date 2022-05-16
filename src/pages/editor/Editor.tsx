@@ -1,11 +1,11 @@
-import { useState, useEffect } from "react";
-import { useHistory, useParams } from "react-router";
+import {useState, useEffect, MouseEvent} from "react";
+import {useHistory, useParams} from "react-router";
 import {
   createArticleThunk,
   deleteArticleThunk,
   updateArticleThunk,
 } from "../../services/thunks";
-import { useForm } from "react-hook-form";
+import {useForm} from "react-hook-form";
 import * as Styles from "../../components/StyledComponents/editorStyles";
 import * as FormStyles from "../../UI/forms/form";
 import IconInputFile from "../../UI/icon-input-file/icon-input-file";
@@ -14,13 +14,9 @@ import DeleteArticleBtn from "../../components/DeleteArticleBtn";
 
 import Modal from "../../components/modal/modal";
 import Preloader from "../../components/Preloader";
-import { useAppDispatch, useAppSelector } from "../../services/hooks";
+import {useAppDispatch, useAppSelector} from "../../services/hooks";
+import {TArticle, textsForModal} from "../../services/types";
 
-const texts = {
-  title: "Удалить запись",
-  text: 'Нажимая кнопку «Удалить запись», материал будет удален без возможности восстановления',
-  button: 'Удалить запись'
-}
 type FormData = {
   title: string;
   description: string;
@@ -35,9 +31,9 @@ function Editor() {
 
   const [isError, setIsError] = useState(false);
 
-  const { inProgress } = useAppSelector((state: any) => state.article);
+  const {inProgress} = useAppSelector((state) => state.article);
   const params: { slug: string, id: string } = useParams();
-  const { article } = useAppSelector((state: any) => state.article);
+  const {article} = useAppSelector((state) => state.article);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -45,24 +41,25 @@ function Editor() {
     setIsModalOpen(true);
   }
 
-  const onClose = (e: any) => {
+  const onClose = (e: CloseEvent) => {
     e.preventDefault();
 
     setIsModalOpen(false);
   }
 
-  const deleteArticle = (e: any) => {
+  const deleteArticle = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-
-    dispatch(deleteArticleThunk(article.slug)).then(() => history.push("/"));
-    setIsModalOpen(false);
+    if (article !== null) {
+      dispatch(deleteArticleThunk(article.slug)).then(() => history.push("/"));
+      setIsModalOpen(false);
+    }
   };
 
   const {
     register,
     getValues,
     setValue,
-    formState: { errors, isValid },
+    formState: {errors, isValid},
     handleSubmit,
   } = useForm<FormData>({
     mode: "onChange",
@@ -81,12 +78,11 @@ function Editor() {
       setValue("description", "");
       setValue("body", "");
       setValue("tagInput", "");
-    }
-    else {
+    } else if (article !== null) {
       setValue("title", article.title);
       setValue("description", article.description);
       setValue("body", article.body);
-      setValue("tagInput", article.tagList);
+      setValue("tagInput", article.tagList.toString());
     }
   }, [article, params])
 
@@ -94,12 +90,11 @@ function Editor() {
     setIsError(isValid)
   })
 
-  const handleSubmitForm = handleSubmit(({ title, description, image, body, tagInput }, e) => {
+  const handleSubmitForm = handleSubmit(({title, description, image, body, tagInput}, e) => {
     e && e.preventDefault();
     if (params.hasOwnProperty('slug')) {
       updateArticle(title, description, image, body, tagInput);
-    }
-    else {
+    } else {
       createArticle(title, description, image, body, tagInput);
     }
   });
@@ -107,25 +102,25 @@ function Editor() {
   const createArticle = (title: string, description: string, image: string, body: string, tagInput: string) => {
 
     dispatch(createArticleThunk({
-      title, description, image, body,
-      tagList: getValues('tagInput').split(','),
-    })
+        title, description, image, body,
+        tagList: getValues('tagInput').split(','),
+      })
     )
       .unwrap()
-      .then((data: any) => {
+      .then((data: TArticle) => {
         history.push(`/article/${data.article.slug}`);
       })
   }
 
   const updateArticle = (title: string, description: string, image: string, body: string, tagInput: string) => {
     const tags = getValues('tagInput');
-    const tagsArray = typeof(tags) === 'string' ? tags.split(',') : tags;
+    const tagsArray = typeof (tags) === 'string' ? tags.split(',') : tags;
 
     dispatch(updateArticleThunk({
-      title, description, image, body,
-      tagList: tagsArray,
-      slug: params.slug,
-    })
+        title, description, image, body,
+        tagList: tagsArray,
+        slug: params.slug,
+      })
     )
       .unwrap()
       .then((data: any) => {
@@ -135,7 +130,7 @@ function Editor() {
 
   return (
     <>
-      {inProgress && (<Preloader />)}
+      {inProgress && (<Preloader/>)}
 
       <Styles.EditorSection>
         <Styles.EditorTitle>{params.hasOwnProperty('slug') ? "Редактировать запись" : "Новая запись"}</Styles.EditorTitle>
@@ -182,7 +177,7 @@ function Editor() {
                   })}
                 />
                 <FormStyles.Icon>
-                  <IconInputFile />
+                  <IconInputFile/>
                 </FormStyles.Icon>
               </FormStyles.InputContainer>
             </FormStyles.Label>
@@ -227,14 +222,15 @@ function Editor() {
 
           </FormStyles.FieldSet>
 
-        </FormStyles.Form >
+        </FormStyles.Form>
 
-        {params.slug && <DeleteArticleBtn  onClick={openModal} mrgTop="24px" text="Удалить запись" align="flex-end"/>}
+        {params.slug && <DeleteArticleBtn onClick={openModal} mrgTop="24px" text="Удалить запись" align="flex-end"/>}
 
       </Styles.EditorSection>
 
-      { isModalOpen &&
-        <Modal deleteArticle={deleteArticle} title={texts.title} text={texts.text} button={texts.button} onClose={onClose} />
+      {isModalOpen &&
+        <Modal deleteArticle={deleteArticle} title={textsForModal.Title} text={textsForModal.Text}
+               button={textsForModal.Button} onClose={onClose}/>
       }
 
     </>

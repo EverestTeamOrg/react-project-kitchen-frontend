@@ -4,6 +4,7 @@ import {device} from "./constantsStyles";
 import {Carousel} from "react-responsive-carousel";
 
 export const SidebarRight = styled.div`
+  box-sizing: border-box;
   margin: 0;
   width: 360px;
 
@@ -23,14 +24,15 @@ export const SidebarRight = styled.div`
     margin: 0 auto;
     // padding-left: 46px;
   }
-
- 
 `
 
-export const StickyContainer = styled(SidebarRight)`
+export const StickyContainer = styled.div`
   position: sticky;
   top: 0;
   right: 0;
+  box-sizing: border-box;
+  margin: 0;
+  width: 100%;
 `
 
 export const SidebarHeading = styled.h2`
@@ -71,6 +73,7 @@ export const ArticleWrapper = styled.div<{padding: string}>`
 
   @media ${device.tablet} {
     text-align: left;
+    border-bottom: none;
   }
 
 `

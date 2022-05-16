@@ -6,15 +6,10 @@ import { composeCreatedDate } from "../../utils/utils";
 import ProfileInformationView from "../profile-information-view";
 import { CommentForm, CommentTextAria, CommentTextAriaWrapper, CommentFooterWrapper } from "../StyledComponents/commentContainerStyle";
 import * as Styled from "../StyledComponents/followUserButtonStyles";
+import {TFollowingUser} from "../../services/types";
 
 type TCommentInputProps = {
-  currentUser: {
-    username: any;
-    image: string;
-    following: boolean,
-    bio?: string,
-    isLoading: boolean,
-  };
+  currentUser: TFollowingUser;
   slug: any;
 };
 

@@ -3,16 +3,10 @@ import CommentList from './CommentList';
 import React from 'react';
 import ListErrors from '../ListErrors';
 import { CommentContainerTitle, CommentContainerWrapper, CommentIsntLogin, CommentLink } from '../StyledComponents/commentContainerStyle';
+import {TFollowingUser} from "../../services/types";
 
 type TCommentContainerProps = {
-  currentUser: {
-    username: string;
-    image: string;
-    email: string;
-    following: boolean,
-    bio?: string,
-    isLoading: boolean,
-  };
+  currentUser: TFollowingUser;
   errors: any;
   slug: string;
   comments: any[];

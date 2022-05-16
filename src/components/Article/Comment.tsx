@@ -6,15 +6,11 @@ import { CommentWrapper, CommentText, CommentInfo } from '../StyledComponents/co
 import ProfileInformationView from '../profile-information-view';
 import { composeCreatedDate } from '../../utils/utils';
 import Like from './like';
+import {TFollowingUser} from "../../services/types";
 
 type TCommentProps = {
   comment: any;
-  currentUser: {
-    username: string;
-    image: string;
-    email: string;
-    bio?: string;
-  };
+  currentUser: TFollowingUser;
   slug: string;
 }
 

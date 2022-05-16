@@ -1,15 +1,11 @@
 import Comment from './Comment';
 import React from 'react';
 import { CommentListWrapper } from '../StyledComponents/commentContainerStyle';
+import {TFollowingUser} from "../../services/types";
 
 type TCommentListProps = {
   comments: any[];
-  currentUser: {
-    username: string;
-    image: string;
-    email: string;
-    bio?: string;
-  };
+  currentUser: TFollowingUser;
   slug: string;
 }
 

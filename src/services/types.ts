@@ -1,10 +1,14 @@
 export type TFollowingUser = {
+  email: string,
   username: string,
   image: string,
-  following: boolean,
+  following?: boolean,
   bio?: string,
   isLoading?: boolean,
 }
+
+export type TUserProfile = Omit<TFollowingUser, "email">
+
 
 export type TFollowingUserProfile = {
   profile: TFollowingUser
@@ -47,4 +51,10 @@ export type TCommentProperties = {
   body: string,
   createdAt: string,
   id: string
+}
+
+export enum textsForModal {
+  Title = 'Удалить запись',
+  Text = 'При нажатии кнопки «Удалить запись» материал будет удален без возможности восстановления',
+  Button = 'Удалить запись'
 }
