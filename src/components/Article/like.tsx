@@ -10,10 +10,10 @@ import {TArticleProperties} from "../../services/types";
 import {articleSlice} from "../../services/articleSlice";
 
 type TLIkeProperties = {
-  article: TArticleProperties,
-  icon: string,
-  isButton?: boolean,
-  onClick?: () => void,
+  article: TArticleProperties;
+  icon: string;
+  isButton?: boolean;
+  onClick?: () => void;
 }
 
 const Like: FunctionComponent<TLIkeProperties> = (props) => {

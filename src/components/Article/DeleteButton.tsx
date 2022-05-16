@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useAppDispatch } from "../../services/hooks";
 import { deleteCommentThunk, getCommentsForArticleThunk } from "../../services/thunks";
 import DeleteArticleBtn from "../DeleteArticleBtn";
 
@@ -9,7 +9,7 @@ type TDeleteButtonProps = {
   show: any;
 };
 const DeleteButton: React.FC<TDeleteButtonProps> = (props) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const deleteComment = (e: React.SyntheticEvent) => {
     e.preventDefault()

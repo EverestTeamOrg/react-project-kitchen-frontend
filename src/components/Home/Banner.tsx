@@ -15,22 +15,20 @@ interface TBannerProps {
 
 const Banner: React.FC<TBannerProps> = ({ token, appName }) => {
   return (
-    <>
-      <BannerContainer>
-        <TextContainer>
-          <Title>Когда вырасту</Title>
-          <Subtitle>Каково быть джуном в турбулентном мире</Subtitle>
-          <BlackCircle src={halfCircle} />
-          <TopFigure src={centerFigure} />
-          <BlueCurve src={blueCurve} />
-          <BlackChevron src={blackChevron} />
-          <YellowCirce location="left" />
-          <YellowCirce location="right" />
-          <BlackCurve src={blackCurve} />
-          <Ball src={ball} />
-        </TextContainer>
-      </BannerContainer>
-    </>
+    <BannerContainer>
+      <TextContainer>
+        <Title>Когда вырасту</Title>
+        <Subtitle>Каково быть джуном в турбулентном мире</Subtitle>
+        <BlackCircle src={halfCircle} />
+        <TopFigure src={centerFigure} />
+        <BlueCurve src={blueCurve} />
+        <BlackChevron src={blackChevron} />
+        <YellowCirce location="left" />
+        <YellowCirce location="right" />
+        <BlackCurve src={blackCurve} />
+        <Ball src={ball} />
+      </TextContainer>
+    </BannerContainer>
   );
 };
 

@@ -1,5 +1,4 @@
 import { useEffect, useState, FC } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { getProfileThunk, updateUserThunk } from "../services/thunks";
 import { useForm } from "react-hook-form";
 import SubmitButton from "./submitButton";
@@ -7,6 +6,7 @@ import IconInput from "../UI/icon-input/icon-input";
 import IconInputFile from "../UI/icon-input-file/icon-input-file";
 import * as FormStyles from "../UI/forms/form";
 import Preloader from "./Preloader";
+import { useAppDispatch, useAppSelector } from "../services/hooks";
 
 interface ISettingsForm {
   setIsUpdatedInfoMsg: (isUpdatedInfoMsg: boolean) => void;
@@ -20,13 +20,13 @@ type FormData = {
 };
 
 const SettingsForm: FC<ISettingsForm> = () => {
-  const { currentUser } = useSelector((state: any) => state.common)
-  const dispatch = useDispatch();
+  const { currentUser } = useAppSelector((state) => state.common)
+  const dispatch = useAppDispatch();
   const [isError, setIsError] = useState(false);
   const [errorsResponse, setErrorsResponse] = useState<any>({});
   const [visible, setVisible] = useState(false);
-  const { inProgress } = useSelector((state: any) => state.settings);
-  const { image } = useSelector((state: any) => state.profile);
+  const { inProgress } = useAppSelector((state) => state.settings);
+  const { image } = useAppSelector((state) => state.profile);
 
   const { register, setValue, formState: { errors, isValid }, handleSubmit,
   } = useForm<FormData>({

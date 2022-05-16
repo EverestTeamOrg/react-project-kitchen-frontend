@@ -1,7 +1,7 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import homeIcon from "../../images/Navigation/homeicon.svg";
 import loginIcon from "../../images/Navigation/loginicon.svg";
+import { useAppSelector } from "../../services/hooks";
 import {
   NavigationItem,
   LeftFixedNavItem,
@@ -12,7 +12,7 @@ import {
 import UserNavigation from "./UserNavigation";
 
 const Navigation = () => {
-  const { isLoggedIn } = useSelector((state: any) => state.common);
+  const { isLoggedIn } = useAppSelector((state) => state.common);
 
   return (
     <>

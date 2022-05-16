@@ -12,9 +12,8 @@ type TCommentProps = {
   currentUser: {
     username: string;
     image: string;
-    following: boolean,
-    bio?: string,
-    isLoading: boolean,
+    email: string;
+    bio?: string;
   };
   slug: string;
 }

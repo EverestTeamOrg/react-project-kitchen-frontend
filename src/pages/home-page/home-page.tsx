@@ -1,7 +1,6 @@
 import MainView from "../../components/Home/MainView";
 import {FC, useEffect} from "react";
 import Tags from "../../components/Home/Tags";
-import {useSelector, useDispatch} from "react-redux";
 import {
   getAllArticlesForSortThunk,
   getAllArticlesThunk,
@@ -12,11 +11,12 @@ import SidebarInformation from "../../components/sidebar-information";
 import {HomePageSection} from "../../components/StyledComponents/homepage/homepageStyles";
 import {SidebarRight, StickyContainer} from "../../components/StyledComponents/sidebar-information-styles";
 import {TagsTitle} from "../../components/StyledComponents/home-page-styles";
+import { useAppDispatch, useAppSelector } from "../../services/hooks";
 
 const Home: FC = () => {
-  const {tags} = useSelector((state: any) => state.home);
-  const {allArticles} = useSelector((state: any) => state.articleList);
-  const dispatch = useDispatch();
+  const {tags} = useAppSelector((state) => state.home);
+  const {allArticles} = useAppSelector((state) => state.articleList);
+  const dispatch = useAppDispatch();
 
   const actionsHome = homeSlice.actions;
 

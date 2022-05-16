@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { logout } from "../../services/commonSlice";
 import {
@@ -12,10 +11,11 @@ import {
   CustomNavigationLink,
 } from "../StyledComponents/NavigationStyles";
 import noAvaImg from "../../images/no-avatar.jpg";
+import { useAppDispatch, useAppSelector } from "../../services/hooks";
 
 const UserNavigation = () => {
-  const dispatch = useDispatch();
-  const { currentUser } = useSelector((state: any) => state.common);
+  const dispatch = useAppDispatch();
+  const { currentUser } = useAppSelector((state) => state.common);
   const [isHovered, setIsHovered] = useState(false);
   const history = useHistory();
 

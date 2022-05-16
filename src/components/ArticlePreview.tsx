@@ -1,5 +1,4 @@
 import React from "react";
-import {useDispatch} from "react-redux";
 import {composeCreatedDate} from "../utils/utils";
 import {TArticleProperties} from "../services/types";
 
@@ -22,8 +21,25 @@ import likeActive from "../images/like-active-icon.svg";
 import {useAppSelector} from "../services/hooks";
 import {articleSlice} from "../services/articleSlice";
 
-const ArticlePreview: React.FC<{ article: TArticleProperties }> = (props) => {
+const FAVORITED_CLASS = "btn btn-sm btn-primary";
+const NOT_FAVORITED_CLASS = "btn btn-sm btn-outline-primary";
+
+
+const ArticlePreview: React.FC<{ article: TArticleProperties } > = (props) => {
+
   const {article} = props;
+  // const favoriteButtonClass = article.favorited
+  //   ? FAVORITED_CLASS
+  //   : NOT_FAVORITED_CLASS;
+
+  // const handleClick = (e: React.SyntheticEvent) => {
+  //   if (article.favorited) {
+  //     dispatch(deleteArticleAsFavoriteThunk(article.slug));
+  //   } else {
+  //     dispatch(setArticleAsFavoriteThunk(article.slug));
+  //   }
+  // };
+
 
   return (
     <ArticleWrapper>

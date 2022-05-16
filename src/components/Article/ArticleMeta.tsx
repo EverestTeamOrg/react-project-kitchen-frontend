@@ -15,16 +15,6 @@ import {useAppDispatch} from "../../services/hooks";
 import {useDispatch} from "react-redux";
 import {articleSlice} from "../../services/articleSlice";
 
-// type TArticleActionsProps = {
-//   article: {
-//     author: {
-//       username: string;
-//       image: string;
-//     };
-//     favoritesCount: number;
-//     createdAt: any;
-//   };
-// }
 
 const ArticleMeta: React.FC<{ article: TArticleProperties }> = (props) => {
   const article = props.article;

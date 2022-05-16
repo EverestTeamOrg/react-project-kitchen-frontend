@@ -8,9 +8,7 @@ type TCommentListProps = {
     username: string;
     image: string;
     email: string;
-    following: boolean,
-    bio?: string,
-    isLoading: boolean,
+    bio?: string;
   };
   slug: string;
 }

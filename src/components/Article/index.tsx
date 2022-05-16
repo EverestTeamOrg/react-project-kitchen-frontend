@@ -2,10 +2,11 @@ import DOMPurify from 'dompurify';
 import {marked} from 'marked';
 import ArticleMeta from "./ArticleMeta";
 import CommentContainer from "./CommentContainer";
-import React, {useEffect, useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {deleteArticleThunk, getArticleThunk, getCommentsForArticleThunk} from "../../services/thunks";
-import {useHistory, useParams} from "react-router";
+
+import React, { useEffect, useState } from "react";
+import { deleteArticleThunk, getArticleThunk, getCommentsForArticleThunk } from "../../services/thunks";
+import { useHistory, useParams } from "react-router";
+
 import ArticleActions from './ArticleActions';
 import {
   ArticleBody,
@@ -22,6 +23,13 @@ import {
 import Modal from '../modal/modal';
 import {SidebarRight} from '../StyledComponents/sidebar-information-styles';
 import SidebarInformation from '../sidebar-information';
+import { useAppDispatch, useAppSelector } from '../../services/hooks';
+
+const texts = {
+  title: "Удалить запись",
+  text: 'Нажимая кнопку «Удалить запись», материал будет удален без возможности восстановления',
+  button: 'Удалить запись'
+}
 
 type TArticleProps = {
   match: {
@@ -32,14 +40,14 @@ type TArticleProps = {
 };
 
 const Article: React.FC<TArticleProps> = (props) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
-  const {allArticles} = useSelector((state: any) => state.articleList);
+  const {allArticles} = useAppSelector((state) => state.articleList);
 
-  const {article} = useSelector((state: any) => state.article);
-  const {currentUser} = useSelector((state: any) => state.common);
-  const {comments} = useSelector((state: any) => state.article);
-  const {commentErrors} = useSelector((state: any) => state.article);
+  const {article} = useAppSelector((state: any) => state.article);
+  const {currentUser} = useAppSelector((state: any) => state.common);
+  const {comments} = useAppSelector((state) => state.article);
+  const {commentErrors} = useAppSelector((state) => state.article);
   const params: { id: string } = useParams();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -67,14 +75,12 @@ const Article: React.FC<TArticleProps> = (props) => {
     setIsModalOpen(true);
   }
 
-  const onClose = (e: any) => {
-    e.preventDefault();
-
+  const onClose = () => {
     setIsModalOpen(false);
   }
 
-  const deleteArticle = (e: any) => {
-    e.preventDefault();
+  const deleteArticle = () => {
+    // e.preventDefault();
     dispatch(deleteArticleThunk(article.slug)).then(() => history.push("/"));
     setIsModalOpen(false);
   };
@@ -125,8 +131,9 @@ const Article: React.FC<TArticleProps> = (props) => {
       </PageBody>
     </ArticlePage>
 
-    {isModalOpen &&
-      <Modal deleteArticle={deleteArticle} title={"Удалить запись"} onClose={onClose}/>
+    { isModalOpen &&
+       <Modal deleteArticle={deleteArticle} title={texts.title} text={texts.text} button={texts.button} onClose={onClose} />
+
     }
   </>);
 };

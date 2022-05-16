@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router";
 import {
   createArticleThunk,
@@ -15,7 +14,13 @@ import DeleteArticleBtn from "../../components/DeleteArticleBtn";
 
 import Modal from "../../components/modal/modal";
 import Preloader from "../../components/Preloader";
+import { useAppDispatch, useAppSelector } from "../../services/hooks";
 
+const texts = {
+  title: "Удалить запись",
+  text: 'Нажимая кнопку «Удалить запись», материал будет удален без возможности восстановления',
+  button: 'Удалить запись'
+}
 type FormData = {
   title: string;
   description: string;
@@ -25,13 +30,14 @@ type FormData = {
 }
 
 function Editor() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const history = useHistory();
 
   const [isError, setIsError] = useState(false);
-  const { inProgress } = useSelector((state: any) => state.article);
+
+  const { inProgress } = useAppSelector((state: any) => state.article);
   const params: { slug: string, id: string } = useParams();
-  const { article } = useSelector((state: any) => state.article);
+  const { article } = useAppSelector((state: any) => state.article);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -47,6 +53,7 @@ function Editor() {
 
   const deleteArticle = (e: any) => {
     e.preventDefault();
+
     dispatch(deleteArticleThunk(article.slug)).then(() => history.push("/"));
     setIsModalOpen(false);
   };
@@ -227,8 +234,8 @@ function Editor() {
 
       </Styles.EditorSection>
 
-      {isModalOpen &&
-        <Modal deleteArticle={deleteArticle} title={"Удалить запись"} onClose={onClose} />
+      { isModalOpen &&
+        <Modal deleteArticle={deleteArticle} title={texts.title} text={texts.text} button={texts.button} onClose={onClose} />
       }
 
     </>

@@ -5,27 +5,29 @@ import { FC } from "react";
 import * as Styles from "../StyledComponents/modalStyles/modalStyles";
 interface IModal {
   title?: string;
+  text?: string;
+  button?: string;
   onClose: any;
   deleteArticle?: any;
 }
 
 const modalRoot = document.getElementById("modal-root");
 
-const Modal: FC<IModal> = ({ title, onClose, deleteArticle }) => {
+const Modal: FC<IModal> = ({ title, text, button, onClose, deleteArticle }) => {
   if (!modalRoot) {
     throw new Error("The element #portal wasn't found");
   }
 
   useEffect(() => {
-    const handleEsc = (e: any) => {
+    const handleEsc = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         onClose(e);
       }
     };
-    window.addEventListener("keydown", handleEsc);
+    document.addEventListener("keydown", handleEsc);
 
     return () => {
-      window.removeEventListener("keydown", handleEsc);
+      document.removeEventListener("keydown", handleEsc);
     };
   }, [onClose]);
 
@@ -35,14 +37,14 @@ const Modal: FC<IModal> = ({ title, onClose, deleteArticle }) => {
       <Styles.ModalContainer>
         <Styles.ModalHeading>{title}</Styles.ModalHeading>
         <Styles.ModalSubHeading>
-          {'Нажимая кнопку «Удалить запись», материал будет удален без возможности восстановления'}
+          {text}
         </Styles.ModalSubHeading>
 
         <Styles.ModalButtonClose onClick={onClose}>
         </Styles.ModalButtonClose>
 
         <Styles.ModalButtonSubmit onClick={deleteArticle}>
-         {'Удалить запись'}
+         {button}
         </Styles.ModalButtonSubmit>
       </Styles.ModalContainer>
     </>

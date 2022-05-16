@@ -1,13 +1,11 @@
 import React from "react";
-import {useSelector} from "react-redux";
-import {
-  ArticleActionsEditor,
-  ArticleActionsEditorIcon,
-  ArticleActionsWrapper
-} from "../StyledComponents/articleActionsStyles";
+
+import { ArticleActionsEditor, ArticleActionsEditorIcon, ArticleActionsWrapper } from "../StyledComponents/articleActionsStyles";
+
 import plus from "../../images/whitePlus.svg";
 
 import DeleteArticleBtn from "../DeleteArticleBtn";
+import { useAppSelector } from "../../services/hooks";
 
 type TArticleActionsProps = {
   article: any;
@@ -16,7 +14,8 @@ type TArticleActionsProps = {
 };
 
 const ArticleActions: React.FC<TArticleActionsProps> = (props) => {
-  const {article} = useSelector((state: any) => state.article);
+
+  const { article } = useAppSelector((state: any) => state.article);
 
   if (props.canModify) {
     return (

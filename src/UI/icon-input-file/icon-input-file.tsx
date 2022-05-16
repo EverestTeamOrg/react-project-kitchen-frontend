@@ -8,19 +8,16 @@ import { IconFileLabel, IconFileInput } from '../../components/StyledComponents/
 // }
 
 const IconInputFile: React.FC = () => {
- 
-  return (
-    <>
 
-        <IconFileLabel>
-          <IconFileInput
-              type="text"
-              name="file" 
-              accept=".jpg, .jpeg, .png, .gif"
-              />
-          <Clip/>
-        </IconFileLabel>
-   </>
+  return (
+    <IconFileLabel>
+      <IconFileInput
+          type="text"
+          name="file"
+          accept=".jpg, .jpeg, .png, .gif"
+          />
+      <Clip/>
+    </IconFileLabel>
   );
 };
 

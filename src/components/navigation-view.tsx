@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from "react";
-import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { useAppSelector } from "../services/hooks";
 
 export const NavigationView: FunctionComponent<{
   currentUser: { username: string };
@@ -8,7 +8,7 @@ export const NavigationView: FunctionComponent<{
   // TODO: все Link сделать NavLink и оформить стили для нажатой ссылки
   // TODO: проверить библиотечные отступы (m-r-... - они в rem). При необх-ти перенести их в стили
 
-  const isLoggedIn = useSelector((state: any) => state.common.isLoggedIn);
+  const isLoggedIn = useAppSelector((state) => state.common.isLoggedIn);
 
   return (
     <ul className="nav navbar-nav pull-xs-right">

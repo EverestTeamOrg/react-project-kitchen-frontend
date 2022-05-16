@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useAppDispatch } from "../../services/hooks";
 import {
   getAllArticlesByTagThunk,
   getAllArticlesThunk,
@@ -17,7 +17,7 @@ type TTagsProps = {
 };
 
 const Tags: React.FC<TTagsProps> = (props) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const tags = props.tags;
   const [activeTag, setActiveTag] = useState("");

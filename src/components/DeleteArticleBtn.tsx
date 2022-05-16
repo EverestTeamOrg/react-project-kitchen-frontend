@@ -1,5 +1,4 @@
 import * as Styles from '../components/StyledComponents/DeleteArticleBtnStyles';
-import Modal from './modal/modal';
 
 type TBtnStyles = {
   mrgTop: string;

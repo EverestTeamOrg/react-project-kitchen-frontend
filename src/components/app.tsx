@@ -1,6 +1,5 @@
 import Header from "./header";
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import Article from "./Article";
 import Editor from "../pages/editor/Editor";
@@ -10,14 +9,14 @@ import Profile from "../pages/profile/Profile";
 import Register from "../pages/register/register";
 import Settings from "../pages/settings/settings";
 import NotFound404 from "../pages/notFound404/notFound404"
-import { useDispatch } from "react-redux";
 import { authThunk } from "../services/thunks";
 import { Layout } from "./StyledComponents/Layout";
 import Footer from "./Footer";
+import { useAppDispatch, useAppSelector } from "../services/hooks";
 
 function App() {
-  const dispatch = useDispatch();
-  const { token } = useSelector((store: any) => store.common);
+  const dispatch = useAppDispatch();
+  const { token } = useAppSelector((store) => store.common);
 
   useEffect(() => {
     if (token) {

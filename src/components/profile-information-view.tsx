@@ -15,11 +15,6 @@ import {TFollowingUser} from "../services/types";
 
 // const ProfileInformationView: FunctionComponent<{avatar: string}> = (props) => {
 const ProfileInformationView: FunctionComponent<{ articleDate: string, author: TFollowingUser }> = (props) => {
-  const {user} = useAppSelector((state: any) => {
-    console.log(state.profile);
-    return state.profile
-  })
-  console.log(user)
 
   return (
     <HoverLink to={`/@${props.author.username}`}>
