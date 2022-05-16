@@ -12,7 +12,7 @@ export interface IArticleRes {
   body: string;
   createdAt: string;
   updatedAt: string;
-  tagList: any[];
+  tagList: string[];
   favorited: boolean;
   favoritesCount: number;
   author: {

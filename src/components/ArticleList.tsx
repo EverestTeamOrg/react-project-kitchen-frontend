@@ -1,5 +1,4 @@
 import ArticlePreview from './ArticlePreview';
-import ListPagination from './ListPagination';
 import React from 'react';
 import Preloader from './Preloader'
 import { ArticleWrapper } from "./StyledComponents/sidebar-information-styles";
@@ -10,12 +9,6 @@ import { any } from 'prop-types';
 
 type TArticleListProps = {
   articles: Array<TArticleProperties> | [];
-  pager?: any;
-  articlesCount?: number;
-  loading?: boolean;
-  currentPage?: any;
-  state?: any;
-  tab?: null | string;
 }
 
 const ArticleList: React.FC<TArticleListProps> = (props) => {
@@ -29,17 +22,12 @@ const ArticleList: React.FC<TArticleListProps> = (props) => {
       </ArticleWrapper>)}
 
       {
-        props.articles.map((article: any) => {
+        props.articles.map((article: TArticleProperties) => {
           return (
             <ArticlePreview article={article} key={article.slug} />
           );
         })
       }
-
-      <ListPagination
-        pager={props.pager}
-        articlesCount={props.articlesCount}
-        currentPage={props.currentPage} />
     </ArcticleListContainer>
   );
 };

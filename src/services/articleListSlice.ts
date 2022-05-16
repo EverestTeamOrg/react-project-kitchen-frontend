@@ -1,13 +1,12 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {
-  getAllArticlesThunk,
   getFeedArticlesThunk,
   getTagsThunk,
   getArticlesByAuthorThunk,
   getFavoritedArticlesThunk,
   setArticleAsFavoriteThunk,
   deleteArticleAsFavoriteThunk,
-  getAllArticlesByTagThunk, getAllArticlesForSortThunk,
+  getAllArticlesByTagThunk, getAllArticles,
 } from "./thunks";
 import {TArticle, TArticleProperties} from "./types";
 
@@ -54,11 +53,9 @@ export const articleListSlice = createSlice({
     [getFeedArticlesThunk.fulfilled]: (state, action: PayloadAction<IInitialState>) => {
       state.articles = action.payload.articles;
     },
-    [getAllArticlesThunk.fulfilled]: (state, action: PayloadAction<IInitialState>) => {
-      state.articles = action.payload.articles;
-    },
-    [getAllArticlesForSortThunk.fulfilled]: (state, action: PayloadAction<IInitialState>) => {
+    [getAllArticles.fulfilled]: (state, action: PayloadAction<IInitialState>) => {
       state.allArticles = action.payload.articles;
+      state.articles = action.payload.articles;
     },
     [getTagsThunk.fulfilled]: (state, action: PayloadAction<IInitialState>) => {
       state.tags = action.payload.tags;

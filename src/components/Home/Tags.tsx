@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useAppDispatch } from "../../services/hooks";
 import {
   getAllArticlesByTagThunk,
-  getAllArticlesThunk,
+  getAllArticles,
 } from "../../services/thunks";
 import {
   CancelButtonDiv,
@@ -27,7 +27,7 @@ const Tags: React.FC<TTagsProps> = (props) => {
       ev: React.MouseEvent<HTMLButtonElement, MouseEvent>
     ) => {
       ev.preventDefault();
-      dispatch(getAllArticlesThunk())
+      dispatch(getAllArticles())
         .unwrap()
         .then(() => {
           setActiveTag("");
@@ -54,7 +54,7 @@ const Tags: React.FC<TTagsProps> = (props) => {
           return (
             <TagContainer key={tag}>
               <Tag isActive={activeTag === tag} onClick={activate}>
-              {'#' + tag.replaceAll('#', '')}
+                {"#" + tag.replaceAll("#", "")}
               </Tag>
               {activeTag === tag && <CancelButton />}
             </TagContainer>
