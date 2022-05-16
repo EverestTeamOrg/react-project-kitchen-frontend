@@ -1,6 +1,5 @@
 import ProfileHeader from "../../components/ProfileHeader";
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getArticlesByAuthorThunk, getProfileThunk } from "../../services/thunks";
 import { profileSlice } from "../../services/profileSlice";
@@ -10,10 +9,10 @@ import { ProfileText } from "../../components/StyledComponents/profileStyles";
 import ArticlePreview  from "../../components/ArticlePreview"
 
 import Preloader from "../../components/Preloader";
-import {useAppSelector} from "../../services/hooks";
+import {useAppDispatch, useAppSelector} from "../../services/hooks";
 
 function Profile() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const { username, image, following, isLoading } = useAppSelector(
     (state) => state.profile
   );
