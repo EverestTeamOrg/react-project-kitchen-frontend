@@ -4,7 +4,7 @@ import * as Styles from "../../components/StyledComponents/modalStyles/modalStyl
 import {FC} from 'react'
 
 interface IModalOverlay {
-  onClick: any;
+  onClick: ()=> void;
 }
 
 const ModalOverlay: FC<IModalOverlay> = ({ onClick }) => {
@@ -12,7 +12,7 @@ const ModalOverlay: FC<IModalOverlay> = ({ onClick }) => {
   useEffect(() => {
     const handleOverlayClick = (e: MouseEvent) => {
       if (e.target === overlay.current) {
-        onClick(e);
+        onClick();
       }
     };
     document.addEventListener("click", handleOverlayClick);

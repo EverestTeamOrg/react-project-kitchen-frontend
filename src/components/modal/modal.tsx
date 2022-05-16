@@ -19,15 +19,15 @@ const Modal: FC<IModal> = ({ title, text, button, onClose, deleteArticle }) => {
   }
 
   useEffect(() => {
-    const handleEsc = (e: any) => {
+    const handleEsc = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         onClose(e);
       }
     };
-    window.addEventListener("keydown", handleEsc);
+    document.addEventListener("keydown", handleEsc);
 
     return () => {
-      window.removeEventListener("keydown", handleEsc);
+      document.removeEventListener("keydown", handleEsc);
     };
   }, [onClose]);
 

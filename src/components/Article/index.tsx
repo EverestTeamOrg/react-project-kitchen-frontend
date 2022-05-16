@@ -75,14 +75,12 @@ const Article: React.FC<TArticleProps> = (props) => {
     setIsModalOpen(true);
   }
 
-  const onClose = (e: any) => {
-    e.preventDefault();
-
+  const onClose = () => {
     setIsModalOpen(false);
   }
 
-  const deleteArticle = (e: any) => {
-    e.preventDefault();
+  const deleteArticle = () => {
+    // e.preventDefault();
     dispatch(deleteArticleThunk(article.slug)).then(() => history.push("/"));
     setIsModalOpen(false);
   };

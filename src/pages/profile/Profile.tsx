@@ -7,7 +7,7 @@ import { getArticlesByAuthorThunk, getProfileThunk } from "../../services/thunks
 import { profileSlice } from "../../services/profileSlice";
 import * as Styles from "../../components/StyledComponents/profileStyles";
 import {ArcticleListContainer} from '../../components/StyledComponents/articleList/ArticleListStyles';
-import { ArticleWrapper } from "../../components/StyledComponents/sidebar-information-styles";
+import { ProfileText } from "../../components/StyledComponents/profileStyles";
 import ArticlePreview  from "../../components/ArticlePreview"
 
 import Preloader from "../../components/Preloader";
@@ -48,9 +48,9 @@ function Profile() {
           {!articles && <Preloader />}
 
           {articles.length === 0 && (
-            <ArticleWrapper padding="20px">
-              No articles are here... yet.
-            </ArticleWrapper>
+            <ProfileText>
+              У вас пока нет статей
+            </ProfileText>
           )}
 
           {articles.map((article: any) => {
