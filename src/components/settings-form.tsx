@@ -7,6 +7,7 @@ import IconInputFile from "../UI/icon-input-file/icon-input-file";
 import * as FormStyles from "../UI/forms/form";
 import Preloader from "./Preloader";
 import { useAppDispatch, useAppSelector } from "../services/hooks";
+import { ErrorResponse } from "../services/types";
 
 interface ISettingsForm {
   setIsUpdatedInfoMsg: (isUpdatedInfoMsg: boolean) => void;
@@ -23,7 +24,7 @@ const SettingsForm: FC<ISettingsForm> = () => {
   const { currentUser } = useAppSelector((state) => state.common)
   const dispatch = useAppDispatch();
   const [isError, setIsError] = useState(false);
-  const [errorsResponse, setErrorsResponse] = useState<any>({});
+  const [errorsResponse, setErrorsResponse] = useState<ErrorResponse>({});
   const [visible, setVisible] = useState(false);
   const { inProgress } = useAppSelector((state) => state.settings);
   const { image } = useAppSelector((state) => state.profile);
@@ -44,14 +45,14 @@ const SettingsForm: FC<ISettingsForm> = () => {
     if (password === "") {
       dispatch(updateUserThunk({ image, username, email }))
         .unwrap()
-        .catch((error: any) => {
+        .catch((error: ErrorResponse) => {
           setErrorsResponse(error);
         });
     }
     else {
       dispatch(updateUserThunk({ image, username, email, password }))
         .unwrap()
-        .catch((error: any) => {
+        .catch((error: ErrorResponse) => {
           setErrorsResponse(error);
         });
     }

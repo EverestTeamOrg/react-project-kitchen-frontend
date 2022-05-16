@@ -47,7 +47,7 @@ function Editor() {
     setIsModalOpen(false);
   }
 
-  const deleteArticle = (e: any) => {
+  const deleteArticle = (e: React.SyntheticEvent<Element, Event>) => {
     e.preventDefault();
     if (article !== null) {
       dispatch(deleteArticleThunk(article.slug)).then(() => history.push("/"));
@@ -123,7 +123,7 @@ function Editor() {
       })
     )
       .unwrap()
-      .then((data: any) => {
+      .then((data: TArticle) => {
         history.push(`/article/${data.article.slug}`);
       })
   }
