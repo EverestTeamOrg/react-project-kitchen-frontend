@@ -10,7 +10,7 @@ import {useAppDispatch} from "../../services/hooks";
 
 type TCommentInputProps = {
   currentUser: TFollowingUser;
-  slug: any;
+  slug: string;
 };
 
 const CommentInput: React.FC<TCommentInputProps> = (props) => {
