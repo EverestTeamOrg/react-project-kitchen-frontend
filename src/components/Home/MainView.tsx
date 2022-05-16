@@ -1,24 +1,11 @@
 import ArticleList from "../ArticleList";
-import { FC, useState } from "react";
-import { getAllArticlesThunk } from "../../services/thunks";
-import { getAllArticles } from "../../api";
+import { FC } from "react";
 import { useAppSelector } from "../../services/hooks";
 
-
 const MainView: FC = () => {
-  const { articles, articlesCount, currentPage, pager } = useAppSelector(
-    (state) => state.articleList
-  );
+  const { articles } = useAppSelector((state) => state.articleList);
 
-  return (
-      <ArticleList
-        pager={pager}
-        articles={articles}
-        // loading={loading}
-        articlesCount={articlesCount}
-        currentPage={currentPage}
-      />
-  );
+  return <ArticleList articles={articles} />;
 };
 
 export default MainView;

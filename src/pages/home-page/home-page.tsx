@@ -2,8 +2,7 @@ import MainView from "../../components/Home/MainView";
 import {FC, useEffect} from "react";
 import Tags from "../../components/Home/Tags";
 import {
-  getAllArticlesForSortThunk,
-  getAllArticlesThunk,
+  getAllArticles,
   getTagsThunk,
 } from "../../services/thunks";
 import {homeSlice} from "../../services/homeSlice";
@@ -21,8 +20,7 @@ const Home: FC = () => {
   const actionsHome = homeSlice.actions;
 
   useEffect(() => {
-    dispatch(getAllArticlesForSortThunk());
-    dispatch(getAllArticlesThunk());
+    dispatch(getAllArticles());
     dispatch(getTagsThunk());
     return () => {
       dispatch(actionsHome.homePageWasUnloaded());
