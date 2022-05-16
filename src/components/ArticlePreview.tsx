@@ -57,7 +57,7 @@ const ArticlePreview: React.FC<{ article: TArticleProperties } > = (props) => {
       <AdditionalInfo>
         <ReadMoreLink to={`/article/${article.slug}`}>Читать дальше</ReadMoreLink>
         <Tagslist>
-          {article.tagList.map((tag: any, i: number) => {
+          {article.tagList.map((tag: string, i: number) => {
             return (
               <ArticleTag key={i}>
                 {'#' + tag.replaceAll('#', '')}

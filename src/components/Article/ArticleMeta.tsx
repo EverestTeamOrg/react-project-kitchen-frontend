@@ -10,7 +10,7 @@ import like from "../../images/like-icon.svg";
 import {composeCreatedDate} from '../../utils/utils';
 import likeActive from "../../images/like-active-icon.svg";
 import {TArticleProperties} from "../../services/types";
-import {getAllArticlesForSortThunk} from "../../services/thunks";
+import {getAllArticles} from "../../services/thunks";
 import {useAppDispatch} from "../../services/hooks";
 import {articleSlice} from "../../services/articleSlice";
 
@@ -25,7 +25,7 @@ const ArticleMeta: React.FC<{ article: TArticleProperties }> = (props) => {
   }
 
   useEffect(() => {
-    dispatch(getAllArticlesForSortThunk());
+    dispatch(getAllArticles());
   }, [])
 
   return (
