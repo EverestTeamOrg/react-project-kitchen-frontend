@@ -112,7 +112,7 @@ function Editor() {
 
   const updateArticle = (title: string, description: string, image: string, body: string, tagInput: string) => {
     const tags = getValues('tagInput');
-    const tagsArray = typeof(tags) === 'string' ? tags.split(',') : tags;
+    const tagsArray = typeof (tags) === 'string' ? tags.split(',') : tags;
 
     dispatch(updateArticleThunk({
       title, description, image, body,
@@ -184,13 +184,14 @@ function Editor() {
             </FormStyles.ErrorsContainer>
             <FormStyles.Label>
               Текст статьи
-              <Styles.EditorTextarea
-                minRows={5.4}
-                isError={errors.body}
-                {...register("body", {
-                  required: "Это поле обязательно к заполнению.",
-                })}
-              />
+              <Styles.TextAreaContainer isError={errors.body}>
+                <Styles.EditorTextarea
+                  minRows={5.4}
+                  {...register("body", {
+                    required: "Это поле обязательно к заполнению.",
+                  })}
+                />
+              </Styles.TextAreaContainer>
             </FormStyles.Label>
             <FormStyles.ErrorsContainer>
               {errors?.body && <FormStyles.Error>{errors?.body?.message}</FormStyles.Error>}
@@ -222,11 +223,11 @@ function Editor() {
 
         </FormStyles.Form >
 
-        {params.slug && <DeleteArticleBtn  onClick={openModal} mrgTop="24px" text="Удалить запись" align="flex-end"/>}
+        {params.slug && <DeleteArticleBtn onClick={openModal} mrgTop="24px" text="Удалить запись" align="flex-end" />}
 
       </Styles.EditorSection>
 
-      { isModalOpen &&
+      {isModalOpen &&
         <Modal deleteArticle={deleteArticle} title={"Удалить запись"} onClose={onClose} />
       }
 
