@@ -48,3 +48,23 @@ export type TCommentProperties = {
   createdAt: string,
   id: string
 }
+
+export type ErrorResponse = {
+  email?: string;
+  password?: string;
+  username?: string;
+}
+
+export type ErrorResponseLogin = ErrorResponse & {
+  'email or password'?: string;
+}
+
+export type TProfileHeader = {
+  profile: {
+    following: boolean;
+    image: string;
+    username: string;
+  };
+  follow?: boolean;
+  unfollow?: boolean;
+}

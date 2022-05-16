@@ -1,4 +1,3 @@
-import ArticleList from "./ArticleList";
 import ProfileHeader from "./ProfileHeader";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
@@ -16,13 +15,10 @@ function Profile() {
   const { username, image, following, isLoading } = useAppSelector(
     (state) => state.profile
   );
-  const { pager, articles, articlesCount, currentPage } = useAppSelector(
-    (state) => state.articleList
-  );
 
   const actionsProfile = profileSlice.actions;
 
-  const params: { username: string;[key: string]: any } = useParams();
+  const params: { username: string;[key: string]: string } = useParams();
 
   useEffect(() => {
     if (params.username) {

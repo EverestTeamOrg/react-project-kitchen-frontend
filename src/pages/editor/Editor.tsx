@@ -15,6 +15,7 @@ import DeleteArticleBtn from "../../components/DeleteArticleBtn";
 import Modal from "../../components/modal/modal";
 import Preloader from "../../components/Preloader";
 import { useAppDispatch, useAppSelector } from "../../services/hooks";
+import { TArticle } from "../../services/types";
 
 const texts = {
   title: "Удалить запись",
@@ -35,9 +36,8 @@ function Editor() {
 
   const [isError, setIsError] = useState(false);
 
-  const { inProgress } = useAppSelector((state: any) => state.article);
+  const { inProgress, article } = useAppSelector((state) => state.article);
   const params: { slug: string, id: string } = useParams();
-  const { article } = useAppSelector((state: any) => state.article);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -45,16 +45,19 @@ function Editor() {
     setIsModalOpen(true);
   }
 
-  const onClose = (e: any) => {
+  const onClose = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
 
     setIsModalOpen(false);
   }
 
-  const deleteArticle = (e: any) => {
+  const deleteArticle = (e: React.SyntheticEvent<Element, Event>) => {
     e.preventDefault();
+    if(article !== null) {
+      dispatch(deleteArticleThunk(article.slug)).then(() => history.push("/"));
+    }
 
-    dispatch(deleteArticleThunk(article.slug)).then(() => history.push("/"));
+
     setIsModalOpen(false);
   };
 
@@ -83,10 +86,12 @@ function Editor() {
       setValue("tagInput", "");
     }
     else {
-      setValue("title", article.title);
-      setValue("description", article.description);
-      setValue("body", article.body);
-      setValue("tagInput", article.tagList);
+      if(article !== null && typeof(article.tagList) === 'string' ) {
+        setValue("title", article.title);
+        setValue("description", article.description);
+        setValue("body", article.body);
+        setValue("tagInput", article.tagList);
+      }
     }
   }, [article, params])
 
@@ -112,7 +117,7 @@ function Editor() {
     })
     )
       .unwrap()
-      .then((data: any) => {
+      .then((data: TArticle) => {
         history.push(`/article/${data.article.slug}`);
       })
   }
@@ -128,7 +133,7 @@ function Editor() {
     })
     )
       .unwrap()
-      .then((data: any) => {
+      .then((data: TArticle) => {
         history.push(`/article/${data.article.slug}`);
       })
   }

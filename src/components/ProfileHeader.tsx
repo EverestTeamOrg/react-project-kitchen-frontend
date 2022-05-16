@@ -1,19 +1,7 @@
-import EditProfileSettings from './EditProfileSettings';
 import FollowUserButton from './FollowUserButton';
 import * as Styles from "./StyledComponents/profileHeaderStyles";
-import { logout as logoutAction } from "../services/commonSlice";
-import { useHistory } from 'react-router-dom';
 import { useAppSelector } from '../services/hooks';
-//Рефактор type!
-type TProfileHeader = {
-  profile: {
-    following: boolean;
-    image: string;
-    username: string;
-  };
-  follow?: any;
-  unfollow?: any;
-}
+import { TProfileHeader } from '../services/types';
 
 function ProfileHeader({ profile, follow, unfollow }: TProfileHeader) {
 

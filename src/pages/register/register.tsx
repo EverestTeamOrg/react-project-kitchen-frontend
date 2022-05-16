@@ -1,6 +1,5 @@
 import { Redirect } from "react-router-dom";
 import React, { useEffect, useState } from "react";
-
 import { useForm } from "react-hook-form";
 import { signupThunk } from "../../services/thunks";
 import * as Styles from "../../components/StyledComponents/authStyles";
@@ -8,6 +7,7 @@ import * as FormStyles from "../../UI/forms/form";
 import Preloader from "../../components/Preloader";
 import { useAppDispatch, useAppSelector } from "../../services/hooks";
 import SubmitButton from "../../components/submitButton";
+import { ErrorResponse } from "../../services/types";
 
 type FormData = {
   username: string;
@@ -18,7 +18,7 @@ type FormData = {
 const Register: React.FC = () => {
   const dispatch = useAppDispatch();
   const { isLoggedIn } = useAppSelector((state) => state.common);
-  const [errorsResponse, setErrorsResponse] = useState<any>({});
+  const [errorsResponse, setErrorsResponse] = useState<ErrorResponse>({});
   const [isError, setIsError] = useState(false);
   const { inProgress } = useAppSelector((state) => state.auth);
 
@@ -40,7 +40,7 @@ const Register: React.FC = () => {
     e && e.preventDefault();
     dispatch(signupThunk({ username, email, password }))
       .unwrap()
-      .catch((error: any) => {
+      .catch((error: ErrorResponse) => {
         setErrorsResponse(error);
       });
   });
