@@ -24,16 +24,6 @@ function App() {
     }
   }, []);
 
-// <<<<<<< HEAD
-//     return (
-//       <div>
-//         <Header
-//           appName={appName}
-//           currentUser={currentUser}
-//         />
-//         {error && <p>{error}</p> }
-//         <Switch>
-// =======
   return (
     <>
       <Header />
