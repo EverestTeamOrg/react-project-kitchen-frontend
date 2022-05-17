@@ -1,6 +1,6 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import { authThunk, loginThunk, signupThunk, updateUserThunk } from "./thunks";
-import {TUser} from "./types";
+import {TUser, TUserProfile} from "./types";
 
 interface IInitialState {
   appName: string,
@@ -27,6 +27,7 @@ const setUserRejected = (state: IInitialState) => {
   state.token = null;
 };
 
+// const setUserFulfilled = (state: IInitialState, action: PayloadAction<{user: {user: TUser, token: string}}>) => {
 const setUserFulfilled = (state: IInitialState, action: PayloadAction<{user: any}>) => { //TODO: тип для бзера
   if (action.payload?.user) {
     const { token, ...rest } = action.payload.user;

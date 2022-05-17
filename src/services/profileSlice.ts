@@ -14,41 +14,41 @@ export const profileSlice = createSlice({
   name: "profile",
   initialState,
   reducers: {
-    profilePageWasUnloaded: (state: TUserProfile) => {
+    profilePageWasUnloaded: (state: TUserProfileProperties) => {
       return initialState;
     },
   },
 
   extraReducers: {
-    [getProfileThunk.fulfilled]: (state: TUserProfile , action) => {
+    [getProfileThunk.fulfilled]: (state: TUserProfileProperties , action) => {
       state.following = action.payload.profile.following;
       state.username = action.payload.profile.username;
       state.image = action.payload.profile.image;
     },
 
-    [followUserThunk.pending] : (state: TUserProfile ) => {
+    [followUserThunk.pending] : (state: TUserProfileProperties ) => {
       state.isLoading = true;
     },
-    [followUserThunk.fulfilled] : (state: TUserProfile , action) => {
+    [followUserThunk.fulfilled] : (state: TUserProfileProperties , action) => {
       state.following = action.payload.profile.following;
       state.username = action.payload.profile.username;
       state.image = action.payload.profile.image;
       state.isLoading = false;
     },
-    [followUserThunk.rejected] : (state: TUserProfile ) => {
+    [followUserThunk.rejected] : (state: TUserProfileProperties ) => {
       state.isLoading = false;
     },
 
-    [unfollowUserThunk.pending] : (state: TUserProfile ) => {
+    [unfollowUserThunk.pending] : (state: TUserProfileProperties ) => {
       state.isLoading = true;
     },
-    [unfollowUserThunk.fulfilled] : (state: TUserProfile , action) => {
+    [unfollowUserThunk.fulfilled] : (state: TUserProfileProperties , action) => {
       state.following = action.payload.profile.following;
       state.username = action.payload.profile.username;
       state.image = action.payload.profile.image;
       state.isLoading = false;
     },
-    [unfollowUserThunk.rejected] : (state: TUserProfile ) => {
+    [unfollowUserThunk.rejected] : (state: TUserProfileProperties ) => {
       state.isLoading = false;
     },
   },

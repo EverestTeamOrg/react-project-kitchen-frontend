@@ -14,10 +14,10 @@ export const settingsSlice  = createSlice({
   name: 'settings',
   initialState,
   reducers: {
-    SETTINGS_SAVED: (state: IInitialState, action: PayloadAction<any>) => {
+    settingsSaved: (state: IInitialState) => {
       state.inProgress = false;
     },
-    SETTINGS_PAGE_UNLOADED: (state, action) => {
+    settingsPageWasUnloaded: (state) => {
       return initialState
     },
 
@@ -35,13 +35,9 @@ export const settingsSlice  = createSlice({
       state.inProgress = false
     }
   },
-
-
 })
-
-
 
 export default settingsSlice.reducer
 export const {
-  SETTINGS_SAVED,
-  SETTINGS_PAGE_UNLOADED} = settingsSlice.actions
+  settingsSaved,
+  settingsPageWasUnloaded} = settingsSlice.actions

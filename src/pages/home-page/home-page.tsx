@@ -37,8 +37,8 @@ const Home: FC = () => {
             tags={tags}
             onClickTag={(
               tag: string,
-              pager: (page: any) => {},
-              payload: any
+              pager: (page: number) => {},
+              payload: {[key: string]: string}
             ) => ({})}
           />
           <SidebarInformation sectionTitle="Популярные материалы" articles={allArticles} keyName='favoritesCount'/>

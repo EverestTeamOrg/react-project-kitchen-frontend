@@ -5,7 +5,7 @@ import Navigation from "./Navigation";
 import { HeaderContainer } from "./StyledComponents/headerStyles";
 
 const Header: FC = () => {
-  const { appName, token } = useAppSelector((store: any) => store.common);
+  const { appName, token } = useAppSelector((store) => store.common);
 
   return (
     <HeaderContainer>

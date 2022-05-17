@@ -1,3 +1,5 @@
+import {TArticleProperties} from "../../services/types";
+
 export type THomeProps = {
   currentUser: {
     token: string;
@@ -5,11 +7,12 @@ export type THomeProps = {
   };
   onLoad: boolean;
   onUnload: boolean;
-  
-  pager: {
-    length: number;
-    name: string;
-  };
-  articles: Array<any>;
- 
+
+  pager: TPager;
+  articles: Array<TArticleProperties>;
+}
+
+export type TPager = {
+  length: number;
+  name: string;
 }

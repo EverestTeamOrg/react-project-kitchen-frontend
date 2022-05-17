@@ -7,7 +7,7 @@ import {TCommentProperties, TUser} from "../../services/types";
 
 type TCommentContainerProps = {
   currentUser: TUser;
-  errors: any;
+  errors: {[key: string]: string};
   slug: string;
   comments: Array<TCommentProperties>;
 }

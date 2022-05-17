@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 import styled from "styled-components";
 import newNoteIcon from "../../images/Navigation/homeicon.svg";
 import logoutIcon from "../../images/Navigation/loginicon.svg";
@@ -6,7 +6,7 @@ import settingsIcon from "../../images/Navigation/settingsicon.svg";
 import hoveredNewNoteIcon from "../../images/Navigation/hoveredhomeicon.svg";
 import hoveredLogoutIcon from "../../images/Navigation/hoveredloginicon.svg";
 import hoveredSettingsIcon from "../../images/Navigation/hoveredsettingsicon.svg";
-import { device } from "./constantsStyles";
+import {device} from "./constantsStyles";
 
 export const NavigationItemWrapper = styled.div`
   position: absolute;
@@ -67,20 +67,18 @@ export const NavigationItem = styled.li`
   }
 `;
 
-export const UserNavigationList = styled.ul<any>(
-  ({ isHovered }: { isHovered: boolean }) => ({
-    listStyleType: "none",
-    boxSizing: "border-box",
-    width: "172px",
-    overflow: "hidden",
-    maxHeight: isHovered ? "163px" : "40px",
-    boxShadow: isHovered
-      ? "0px 4px 8px rgba(0, 0, 0, 0.08), 0px 0px 4px rgba(0, 0, 0, 0.08), 0px 0px 1px rgba(0, 0, 0, 0.08)"
-      : "none",
-    borderRadius: isHovered ? "8px" : "none",
-    transition: "all linear 0.2s",
-  })
-);
+export const UserNavigationList = styled.ul<{ isHovered: boolean }>`
+  list-style-type: none;
+  box-sizing: border-box;
+  width: 172px;
+  overflow: hidden;
+  max-height: ${props => props.isHovered ? "163px" : "40px"};
+  box-shadow: ${props => props.isHovered ?
+    "0px 4px 8px rgba(0, 0, 0, 0.08), 0px 0px 4px rgba(0, 0, 0, 0.08), 0px 0px 1px rgba(0, 0, 0, 0.08)"
+    : "none"};
+  border-radius: ${props => props.isHovered ? "8px": "none"};
+  transition: all linear 0.2s,
+`
 
 export const UserNavAvatar = styled.img`
   max-width: 100%;

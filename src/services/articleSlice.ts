@@ -46,7 +46,7 @@ const deleteComment = (state: IInitialState, action: PayloadAction<{commentId: s
   }
 }
 
-const addCommentErrors = (state: IInitialState, action: PayloadAction<any>) => {
+const addCommentErrors = (state: IInitialState, action: PayloadAction<{errors: {[key: string]: string}}>) => {
   state.commentErrors = action.payload.errors,
   state.comments = initialState.comments
 }
