@@ -1,7 +1,7 @@
 import React from "react";
 
 type TListErrorsProps = {
-  errors: any
+  errors: { [key: string]: string }
 }
 
 const ListErrors: React.FC<TListErrorsProps> = ({errors}) => {

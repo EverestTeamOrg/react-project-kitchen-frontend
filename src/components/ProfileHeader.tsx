@@ -1,9 +1,9 @@
 import FollowUserButton from './FollowUserButton';
 import * as Styles from "./StyledComponents/profileHeaderStyles";
 import { useAppSelector } from '../services/hooks';
-import {TUserProfile} from "../services/types";
+import {TUserProfile, TUserProfileProperties} from "../services/types";
 type TProfileHeader = {
-  profile: TUserProfile;
+  profile: TUserProfileProperties;
   follow?: boolean;
   unfollow?: boolean;
 }

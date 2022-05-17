@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { followUserThunk, getProfileThunk, unfollowUserThunk } from "./thunks";
-import {TUserProfile} from "./types";
+import {TUserProfileProperties} from "./types";
 
-export const initialState: TUserProfile = {
+export const initialState: TUserProfileProperties = {
   username: "",
   image: "",
   following: false,

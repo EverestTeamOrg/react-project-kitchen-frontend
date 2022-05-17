@@ -11,10 +11,10 @@ import {
 } from "./StyledComponents/profile-information-view-styles";
 
 import {useAppSelector} from "../services/hooks";
-import {TFollowingUser} from "../services/types";
+import {TUser} from "../services/types";
 
 // const ProfileInformationView: FunctionComponent<{avatar: string}> = (props) => {
-const ProfileInformationView: FunctionComponent<{ articleDate: string, author: TFollowingUser }> = (props) => {
+const ProfileInformationView: FunctionComponent<{ articleDate: string, author: TUser }> = (props) => {
 
   return (
     <HoverLink to={`/@${props.author.username}`}>

@@ -1,12 +1,12 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import { authThunk, loginThunk, signupThunk, updateUserThunk } from "./thunks";
-import {TFollowingUser} from "./types";
+import {TUser} from "./types";
 
 interface IInitialState {
   appName: string,
   token: string | null,
   isLoggedIn: boolean,
-  currentUser: TFollowingUser
+  currentUser: TUser
 
 }
 
