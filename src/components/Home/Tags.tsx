@@ -40,7 +40,7 @@ const Tags: React.FC<TTagsProps> = (props) => {
   if (tags) {
     return (
       <TagsContainer>
-        {tags.map((tag) => {
+        {tags.map((tag, index) => {
           const activate = (
             ev: React.MouseEvent<HTMLButtonElement, MouseEvent>
           ) => {
@@ -52,7 +52,7 @@ const Tags: React.FC<TTagsProps> = (props) => {
               });
           };
           return (
-            <TagContainer key={tag}>
+            <TagContainer key={index}>
               <Tag isActive={activeTag === tag} onClick={activate}>
                 {"#" + tag.replaceAll("#", "")}
               </Tag>
