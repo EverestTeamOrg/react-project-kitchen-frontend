@@ -6,9 +6,9 @@ import { useAppDispatch } from "../services/hooks";
 import {TUserProfileProperties} from "../services/types";
 
 type TFollowUserButton = {
-  follow?: any;
+  follow?: boolean;
   isUser: boolean;
-  unfollow?: any;
+  unfollow?: boolean;
   user: TUserProfileProperties
 }
 

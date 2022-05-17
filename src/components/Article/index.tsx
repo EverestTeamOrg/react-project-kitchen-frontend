@@ -97,7 +97,7 @@ const Article: React.FC<TArticleProps> = (props) => {
             <ArticleText marginBottom={isTags} dangerouslySetInnerHTML={markup}></ArticleText>
 
             <ArticleTagsList>
-              {article.tagList.map((tag: any) => {
+              {article.tagList.map((tag) => {
                 return (
                   <ArticleTag key={tag}>
                     {'#' + tag.replaceAll('#', '')}

@@ -2,9 +2,10 @@ import Comment from './Comment';
 import React from 'react';
 import { CommentListWrapper } from '../StyledComponents/commentContainerStyle';
 import {TUser} from "../../services/types";
+import {TCommentProperties} from '../../services/types'
 
 type TCommentListProps = {
-  comments: any[];
+  comments: Array<TCommentProperties>;
   currentUser: TUser;
   slug: string;
 }

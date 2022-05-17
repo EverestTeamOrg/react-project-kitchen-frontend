@@ -7,9 +7,9 @@ import {TCommentProperties, TUser} from "../../services/types";
 
 type TCommentContainerProps = {
   currentUser: TUser;
-  errors: { [key: string]: string };
+  errors: any;
   slug: string;
-  comments: TCommentProperties[];
+  comments: Array<TCommentProperties>;
 }
 
 const CommentContainer: React.FC<TCommentContainerProps>  = (props) => {

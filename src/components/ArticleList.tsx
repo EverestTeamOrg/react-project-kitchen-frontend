@@ -5,7 +5,6 @@ import { ArticleWrapper } from "./StyledComponents/sidebar-information-styles";
 import { ArcticleListContainer } from './StyledComponents/articleList/ArticleListStyles';
 import { TArticleProperties} from "../services/types";
 
-
 type TArticleListProps = {
   articles: Array<TArticleProperties> | [];
 }

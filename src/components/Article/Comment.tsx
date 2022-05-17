@@ -1,15 +1,15 @@
 import DeleteButton from './DeleteButton';
 import { Link } from 'react-router-dom';
 import React from 'react';
-
 import { CommentWrapper, CommentText, CommentInfo } from '../StyledComponents/commentContainerStyle';
 import ProfileInformationView from '../profile-information-view';
 import { composeCreatedDate } from '../../utils/utils';
 import Like from './like';
 import {TUser} from "../../services/types";
+import {TCommentProperties} from '../../services/types'
 
 type TCommentProps = {
-  comment: any;
+  comment: TCommentProperties;
   currentUser: TUser;
   slug: string;
 }

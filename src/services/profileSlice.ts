@@ -14,41 +14,41 @@ export const profileSlice = createSlice({
   name: "profile",
   initialState,
   reducers: {
-    profilePageWasUnloaded: (state) => {
+    profilePageWasUnloaded: (state: TUserProfile) => {
       return initialState;
     },
   },
 
   extraReducers: {
-    [getProfileThunk.fulfilled]: (state, action) => {
+    [getProfileThunk.fulfilled]: (state: TUserProfile , action) => {
       state.following = action.payload.profile.following;
       state.username = action.payload.profile.username;
       state.image = action.payload.profile.image;
     },
 
-    [followUserThunk.pending] : (state) => {
+    [followUserThunk.pending] : (state: TUserProfile ) => {
       state.isLoading = true;
     },
-    [followUserThunk.fulfilled] : (state, action) => {
+    [followUserThunk.fulfilled] : (state: TUserProfile , action) => {
       state.following = action.payload.profile.following;
       state.username = action.payload.profile.username;
       state.image = action.payload.profile.image;
       state.isLoading = false;
     },
-    [followUserThunk.rejected] : (state) => {
+    [followUserThunk.rejected] : (state: TUserProfile ) => {
       state.isLoading = false;
     },
 
-    [unfollowUserThunk.pending] : (state) => {
+    [unfollowUserThunk.pending] : (state: TUserProfile ) => {
       state.isLoading = true;
     },
-    [unfollowUserThunk.fulfilled] : (state, action) => {
+    [unfollowUserThunk.fulfilled] : (state: TUserProfile , action) => {
       state.following = action.payload.profile.following;
       state.username = action.payload.profile.username;
       state.image = action.payload.profile.image;
       state.isLoading = false;
     },
-    [unfollowUserThunk.rejected] : (state) => {
+    [unfollowUserThunk.rejected] : (state: TUserProfile ) => {
       state.isLoading = false;
     },
   },
