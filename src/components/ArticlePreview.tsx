@@ -28,19 +28,6 @@ const NOT_FAVORITED_CLASS = "btn btn-sm btn-outline-primary";
 const ArticlePreview: React.FC<{ article: TArticleProperties } > = (props) => {
 
   const {article} = props;
-  // const favoriteButtonClass = article.favorited
-  //   ? FAVORITED_CLASS
-  //   : NOT_FAVORITED_CLASS;
-
-  // const handleClick = (e: React.SyntheticEvent) => {
-  //   if (article.favorited) {
-  //     dispatch(deleteArticleAsFavoriteThunk(article.slug));
-  //   } else {
-  //     dispatch(setArticleAsFavoriteThunk(article.slug));
-  //   }
-  // };
-
-
   return (
     <ArticleWrapper>
       <AuthorWrapper margin="16px">

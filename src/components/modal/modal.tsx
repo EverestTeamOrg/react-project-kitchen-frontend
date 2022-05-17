@@ -7,8 +7,8 @@ interface IModal {
   title?: string;
   text?: string;
   button?: string;
-  onClose: any;
-  deleteArticle?: any;
+  onClose: ()=> void;
+  deleteArticle?: ()=> void;
 }
 
 const modalRoot = document.getElementById("modal-root");
@@ -21,7 +21,7 @@ const Modal: FC<IModal> = ({ title, text, button, onClose, deleteArticle }) => {
   useEffect(() => {
     const handleEsc = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
-        onClose(e);
+        onClose();
       }
     };
     document.addEventListener("keydown", handleEsc);

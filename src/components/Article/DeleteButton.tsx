@@ -5,7 +5,7 @@ import DeleteArticleBtn from "../DeleteArticleBtn";
 
 type TDeleteButtonProps = {
   slug: string;
-  commentId: any;
+  commentId: string;
   show: any;
 };
 const DeleteButton: React.FC<TDeleteButtonProps> = (props) => {

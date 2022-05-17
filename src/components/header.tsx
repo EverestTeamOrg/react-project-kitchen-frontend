@@ -10,7 +10,7 @@ const Header: FC = () => {
   return (
     <HeaderContainer>
       <Navigation />
-      <Banner token={token} appName={appName} />
+      <Banner />
     </HeaderContainer>
   );
 };

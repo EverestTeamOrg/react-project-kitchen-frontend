@@ -1,4 +1,4 @@
-import React from "react";
+import React, {FC} from "react";
 import { Ball, BannerContainer, BlackChevron, BlackCircle, BlackCurve, BlueCurve, Subtitle, TextContainer, Title, TopFigure, YellowCirce } from "../StyledComponents/bannerStyles";
 import styled from "styled-components";
 import centerFigure from "../../images/Banner/centerFigure.svg";
@@ -8,12 +8,7 @@ import blackChevron from "../../images/Banner/blackChevron.svg";
 import halfCircle from "../../images/Banner/halfCircle.svg";
 import ball from "../../images/Banner/ball.svg";
 
-interface TBannerProps {
-  appName: any;
-  token: any;
-}
-
-const Banner: React.FC<TBannerProps> = ({ token, appName }) => {
+const Banner: FC = () => {
   return (
     <BannerContainer>
       <TextContainer>

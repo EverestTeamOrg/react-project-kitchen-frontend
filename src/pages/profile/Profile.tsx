@@ -52,7 +52,7 @@ function Profile() {
             </ProfileText>
           )}
 
-          {articles.map((article: any) => {
+          {articles.map((article) => {
             return <ArticlePreview article={article} key={article.slug} />;
           })}
 
