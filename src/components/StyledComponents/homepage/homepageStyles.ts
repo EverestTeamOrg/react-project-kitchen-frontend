@@ -10,7 +10,7 @@ export const HomePageSection = styled.section`
   padding-bottom: 30px;
 
   @media ${device.laptopL} {
-   max-width: 980px;
+   max-width: 1060px;
    margin: -314px auto 0;
   }
 

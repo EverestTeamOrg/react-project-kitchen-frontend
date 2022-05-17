@@ -68,16 +68,17 @@ export const ArticleText = styled.p<{fontSizeLap: string, lineHeightLap: string}
 `;
 
 export const AdditionalInfo = styled.div`
+  margin: 0;
   width: 100%;
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
-  align-items: flex-start;
+  // align-items: flex-start;
   padding: 0px;
 
   @media ${device.tablet} {
     flex-direction: column-reverse;
-    column-gap: 20px;
+    column-gap: 8px;
+    // align-items: flex-end;
   }
 
   @media ${device.tabletVert} {
@@ -87,7 +88,8 @@ export const AdditionalInfo = styled.div`
 `;
 
 export const ReadMoreLink = styled(Link)`
-  margin-left: 0;
+  display: block;
+  margin: 0;
   color: ${colors.red};
 
   &:hover{
@@ -105,11 +107,11 @@ export const Tagslist = styled.ul`
   margin-right: 0;
   flex-wrap: wrap;
   max-width: 318px;
-  max-height: 52px;
 
   @media ${device.tablet} {
     margin: 0;
-
+    justify-content: start;
+    align-items: flex-start;
   }
 
 `;
