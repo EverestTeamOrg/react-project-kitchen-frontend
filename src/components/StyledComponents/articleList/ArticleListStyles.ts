@@ -4,7 +4,7 @@ import { device } from '../constantsStyles';
 export const ArcticleListContainer = styled.div`
   max-width: 700px;
   width: 100%;
-  margin: 0 auto;
+  margin: 0;
 
   @media ${device.laptopL} {
     max-width: 600px;
