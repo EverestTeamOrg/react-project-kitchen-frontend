@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from "axios";
 import { IArticleRes, IUserLogin, ApiEnums } from "./types";
-import { TFollowingUser, TFollowingUserProfile } from "../services/types";
+import { TUser, TUserProfile } from "../services/types";
 
 // set token on every request
 export const setTokenAxios = (_token: string | null) => {
@@ -265,7 +265,7 @@ export const getCommentsForArticle = async (slug: string): Promise<any> => {
   return response.data;
 };
 // Profile
-export const followUser = async (userName: string): Promise<TFollowingUserProfile> => {
+export const followUser = async (userName: string): Promise<TUserProfile> => {
   const response: AxiosResponse<any> = await axios.post(
     `${ApiEnums.BASE_URL}/profiles/${userName}/follow`
   );

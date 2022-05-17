@@ -108,8 +108,8 @@ const Article: React.FC<TArticleProps> = (props) => {
           </ArticleBody>
 
           <CommentContainer
-            comments={comments || []}
-            errors={commentErrors}
+            comments={comments !== null ? comments : []}
+            errors={commentErrors !== null? commentErrors : {}}
             slug={props.match.params.id}
             currentUser={currentUser}
           />

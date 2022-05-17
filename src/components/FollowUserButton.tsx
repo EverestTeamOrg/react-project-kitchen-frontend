@@ -3,13 +3,13 @@ import * as Styles from "./StyledComponents/followUserButtonStyles";
 import minus from "../images/whiteMinus.svg";
 import plus from "../images/whitePlus.svg";
 import { useAppDispatch } from "../services/hooks";
-import {TUserProfile} from "../services/types";
+import {TUserProfileProperties} from "../services/types";
 
 type TFollowUserButton = {
   follow?: boolean;
   isUser: boolean;
   unfollow?: boolean;
-  user: TUserProfile
+  user: TUserProfileProperties
 }
 
 function FollowUserButton({ user }: TFollowUserButton) {

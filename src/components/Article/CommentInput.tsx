@@ -5,11 +5,11 @@ import { composeCreatedDate } from "../../utils/utils";
 import ProfileInformationView from "../profile-information-view";
 import { CommentForm, CommentTextAria, CommentTextAriaWrapper, CommentFooterWrapper } from "../StyledComponents/commentContainerStyle";
 import * as Styled from "../StyledComponents/followUserButtonStyles";
-import {TFollowingUser} from "../../services/types";
+import {TUser} from "../../services/types";
 import {useAppDispatch} from "../../services/hooks";
 
 type TCommentInputProps = {
-  currentUser: TFollowingUser;
+  currentUser: TUser;
   slug: string;
 };
 

@@ -13,7 +13,7 @@ import {
 
 type TTagsProps = {
   tags: string[] | null;
-  onClickTag: (tag: string, pager: (page: any) => {}, payload: any) => {};
+  onClickTag: (tag: string, pager: (page: number) => {}, payload: { [key: string]: string }) => {};
 };
 
 const Tags: React.FC<TTagsProps> = (props) => {

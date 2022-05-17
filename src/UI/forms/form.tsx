@@ -1,6 +1,7 @@
-import { Link } from 'react-router-dom';
+import {FieldError} from "react-hook-form";
 import styled from 'styled-components';
-import { textColor, inputBorderColor } from '../../components/StyledComponents/constantsStyles';
+import {textColor, inputBorderColor} from '../../components/StyledComponents/constantsStyles';
+import {isError} from "util";
 
 export const Form = styled.form`
   width: 100%;
@@ -16,7 +17,7 @@ export const Label = styled.label`
   display: block;
 
   font-family: 'AlegreyaSans', Times, serif;
-  font-weight:400;
+  font-weight: 400;
   font-size: 16px;
   line-height: 1.5;
   color: ${textColor.secondaryText};
@@ -49,25 +50,25 @@ export const Input = styled.input<{isError: any}>`
   }
 `
 
-export const Error = styled.p`
-  font-family: 'AlegreyaSans', Times, serif;
-  font-weight:400;
-  font-size: 16px;
-  line-height: 1.5;
-  color: ${textColor.error};
-`
-export const ErrorsContainer = styled.div`
-  height: 24px;
-  margin: 0;
-`
-
-export const InputContainer = styled.div`
-  position:relative;
+  export const Error = styled.p`
+    font-family: 'AlegreyaSans', Times, serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    color: ${textColor.error};
   `
-export const Icon = styled.div`
-  position: absolute;
-  top: 20%;
-  right: 17px;
-  cursor: pointer;
-  z-index: 7;
-`
+  export const ErrorsContainer = styled.div`
+    height: 24px;
+    margin: 0;
+  `
+
+  export const InputContainer = styled.div`
+    position: relative;
+  `
+  export const Icon = styled.div`
+    position: absolute;
+    top: 20%;
+    right: 17px;
+    cursor: pointer;
+    z-index: 7;
+  `

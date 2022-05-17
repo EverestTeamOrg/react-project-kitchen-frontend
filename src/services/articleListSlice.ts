@@ -9,6 +9,7 @@ import {
   getAllArticlesByTagThunk, getAllArticles,
 } from "./thunks";
 import {TArticle, TArticleProperties} from "./types";
+import {TPager} from "../components/Home/types";
 
 interface IInitialState {
   articles: Array<TArticleProperties>,
@@ -19,7 +20,7 @@ interface IInitialState {
   tab: null | string,
   tag: null | string,
   tags: Array<string>,
-  pager: null | any,
+  pager: null | TPager,
 }
 
 const initialState: IInitialState = {
@@ -44,7 +45,7 @@ const setFavoritedStatusOnArticle = (state: IInitialState, action: PayloadAction
   });
 };
 
-export const articleListSlice = createSlice({
+const articleListSlice = createSlice({
   name: "articleList",
   initialState,
   reducers: {},

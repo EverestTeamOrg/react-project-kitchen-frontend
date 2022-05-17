@@ -1,4 +1,4 @@
-export type TFollowingUser = {
+export type TUser = {
   email: string,
   username: string,
   image: string,
@@ -7,15 +7,15 @@ export type TFollowingUser = {
   isLoading?: boolean,
 }
 
-export type TUserProfile = Omit<TFollowingUser, "email">
+export type TUserProfileProperties = Omit<TUser, "email">
 
 
-export type TFollowingUserProfile = {
-  profile: TFollowingUser
+export type TUserProfile = {
+  profile: TUser
 }
 
 export type TArticleProperties = {
-  author: TFollowingUser,
+  author: TUser,
   body: string,
   createdAt: string,
   description: string,
@@ -47,7 +47,7 @@ export type TEditingArticle = {
 }
 
 export type TCommentProperties = {
-  author: TFollowingUser,
+  author: TUser,
   body: string,
   createdAt: string,
   id: string
@@ -67,4 +67,8 @@ export type ErrorResponse = {
 
 export type ErrorResponseLogin = ErrorResponse & {
   'email or password'?: string;
+}
+
+export type TComments = {
+  comments: Array<TCommentProperties>
 }

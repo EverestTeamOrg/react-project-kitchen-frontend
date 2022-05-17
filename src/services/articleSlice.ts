@@ -8,18 +8,18 @@ import {
   deleteCommentThunk,
   getCommentsForArticleThunk,
 } from "./thunks";
-import {TArticle, TArticleProperties, TCommentProperties} from "./types";
+import {TArticle, TArticleProperties, TCommentProperties, TComments} from "./types";
 
 interface IInitialState {
   article: TArticleProperties | null,
-  comments: Array<TCommentProperties>,
-  commentErrors: any,
+  comments: Array<TCommentProperties> | null,
+  commentErrors: { [key: string]: string } | null,
   inProgress: boolean
 }
 
 const initialState: IInitialState = {
   article: null,
-  comments: [],
+  comments: null,
   commentErrors: null,
   inProgress: false
 };
@@ -31,20 +31,22 @@ const setArticle = (state: IInitialState, action: PayloadAction<TArticle>) => {
   state.inProgress = false;
 };
 
-const setCommentsForArticle = (state: IInitialState, action: PayloadAction<any>) => {
+const setCommentsForArticle = (state: IInitialState, action: PayloadAction<TComments>) => {
   state.comments = action.payload.comments;
 };
 
-const addComment = (state: IInitialState, action: PayloadAction<any>) => {
+const addComment = (state: IInitialState, action: PayloadAction<{comment: TCommentProperties}>) => {
   state.commentErrors = null,
   state.comments = (state.comments || []).concat([action.payload.comment])
 };
 
-const deleteComment = (state: IInitialState, action: PayloadAction<any>) => {
-  state.comments = state.comments.filter(comment => comment.id !== action.payload.commentId)
+const deleteComment = (state: IInitialState, action: PayloadAction<{commentId: string}>) => {
+  if (state.comments !== null) {
+    state.comments = state.comments.filter(comment => comment.id !== action.payload.commentId)
+  }
 }
 
-const addCommentErrors = (state: IInitialState, action: PayloadAction<any>) => {
+const addCommentErrors = (state: IInitialState, action: PayloadAction<{errors: {[key: string]: string}}>) => {
   state.commentErrors = action.payload.errors,
   state.comments = initialState.comments
 }

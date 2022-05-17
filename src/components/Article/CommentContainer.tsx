@@ -3,12 +3,11 @@ import CommentList from './CommentList';
 import React from 'react';
 import ListErrors from '../ListErrors';
 import { CommentContainerTitle, CommentContainerWrapper, CommentIsntLogin, CommentLink } from '../StyledComponents/commentContainerStyle';
-import {TFollowingUser} from "../../services/types";
-import {TCommentProperties} from '../../services/types'
+import {TCommentProperties, TUser} from "../../services/types";
 
 type TCommentContainerProps = {
-  currentUser: TFollowingUser;
-  errors: any;
+  currentUser: TUser;
+  errors: {[key: string]: string};
   slug: string;
   comments: Array<TCommentProperties>;
 }
