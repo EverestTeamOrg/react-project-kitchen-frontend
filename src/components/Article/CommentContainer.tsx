@@ -4,12 +4,13 @@ import React from 'react';
 import ListErrors from '../ListErrors';
 import { CommentContainerTitle, CommentContainerWrapper, CommentIsntLogin, CommentLink } from '../StyledComponents/commentContainerStyle';
 import {TFollowingUser} from "../../services/types";
+import {TCommentProperties} from '../../services/types'
 
 type TCommentContainerProps = {
   currentUser: TFollowingUser;
   errors: any;
   slug: string;
-  comments: any[];
+  comments: Array<TCommentProperties>;
 }
 
 const CommentContainer: React.FC<TCommentContainerProps>  = (props) => {

@@ -4,8 +4,6 @@ import Preloader from './Preloader'
 import { ArticleWrapper } from "./StyledComponents/sidebar-information-styles";
 import { ArcticleListContainer } from './StyledComponents/articleList/ArticleListStyles';
 import { TArticleProperties} from "../services/types";
-import { any } from 'prop-types';
-
 
 type TArticleListProps = {
   articles: Array<TArticleProperties> | [];

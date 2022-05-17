@@ -1,4 +1,3 @@
-import ListErrors from "../../components/ListErrors";
 import { useEffect, useState, FC } from "react";
 import { updateUserThunk } from "../../services/thunks";
 import { logout as logoutAction } from "../../services/commonSlice";
@@ -41,8 +40,6 @@ const Settings = () => {
         <Styles.SettingsTitle>Ваши настройки</Styles.SettingsTitle>
 
         {isUpdatedInfoMsg && <h4 className="text-xs-center">Updated</h4>}
-
-        {/* <ListErrors errors={this.props.errors}></ListErrors> */}
 
         <SettingsForm setIsUpdatedInfoMsg={setIsUpdatedInfoMsg} />
 

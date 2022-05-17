@@ -41,14 +41,12 @@ function Editor() {
     setIsModalOpen(true);
   }
 
-  const onClose = (e: CloseEvent) => {
-    e.preventDefault();
+  const onClose = () => {
 
     setIsModalOpen(false);
   }
 
-  const deleteArticle = (e: React.SyntheticEvent<Element, Event>) => {
-    e.preventDefault();
+  const deleteArticle = () => {
     if (article !== null) {
       dispatch(deleteArticleThunk(article.slug)).then(() => history.push("/"));
       setIsModalOpen(false);

@@ -3,8 +3,8 @@ export type THomeProps = {
     token: string;
     username: string;
   };
-  onLoad: any;
-  onUnload: any;
+  onLoad: boolean;
+  onUnload: boolean;
   
   pager: {
     length: number;
