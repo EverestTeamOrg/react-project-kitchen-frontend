@@ -54,8 +54,8 @@
     Бэкенд для локального запуска проекта можно найти здесь:
     [репозиторий бэкенда на Express](https://github.com/gothinkster/node-express-realworld-example-app) и на [Контейнер в Docker](https://github.com/Yandex-Practicum/react-project-kitchen-backend).
 
-* Необходимо установить Docker и перейдя в репозиторий бэкенда выполнить команду `make run`в терминале
-* Перейти в репозиторий фронтенда выполнить команду `npm install && npm start` в терминале
+* Необходимо установить Docker и, перейдя в репозиторий бэкенда, выполнить команду `make run`в терминале
+* Перейти в репозиторий фронтенда и выполнить команду `npm install && npm start` в терминале
 
 
 
